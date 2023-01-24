@@ -1,0 +1,28 @@
+.outerdiv{
+    margin-inline: 120px ;
+    position: relative;
+    height: 100vh;
+}
+
+.outerdiv img{
+    position: absolute;
+    bottom: 80px;
+    right: 50px;
+    height: 50%;
+    width:50% ;
+    }
+.title1{
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+.description1{
+    position: absolute;
+    top: 150px;
+    left: 50px;
+}
+
+.description1 p{
+    margin: 15px;
+}
+

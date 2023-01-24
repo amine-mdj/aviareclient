@@ -1,0 +1,83 @@
+.footer{
+    background-color: #455054;
+    border-radius: 20px 20px 0 0 ;
+    
+  }
+  
+  .title{
+    color:burlywood;
+    padding: 20px;
+  }
+
+  .grid{
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+  
+  .grid p{
+    color:white;
+    padding-top: 20px;
+    padding-left: 20px;
+    font-weight: 200;
+  }
+
+  .flex{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+  }
+  
+  .flex img:not(:nth-child(3)){
+    height: 50px ;
+    width: 50px ;
+    margin: 10px;
+  }
+
+  .paypal{
+    background-color: white;
+    height: 32px ;
+    width: 50px ;
+    margin: 19px;
+  }
+  
+  .flex li{
+    list-style: none;
+    margin: 20px 10px;
+    display: inline-block;
+    font-size: 15px;
+    padding:10px 10px;
+    color:#fff;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    transition: .5s;
+  }
+
+  .flex li:nth-child(odd){
+   padding:10px 15px;
+    
+  }
+
+  .flex li:hover{
+    color:coral ;
+    border: 1px solid coral ;
+    transition: .5px;
+  }
+
+.nosmoyens > div{
+  margin-top: 50px;
+margin-left: 350px;
+}
+
+.nosmoyens > div p{
+  color:brown;
+}
+
+.icons{
+  margin-top: 30px ;
+  margin-left: 30px;
+}
+
+.divimg{
+    margin-top: 20px;
+    margin-left: 20px;
+  }

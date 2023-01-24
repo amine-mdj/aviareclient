@@ -1,0 +1,52 @@
+.div0mc{
+    margin-top: 30vh;
+    margin-inline: 100px;
+    
+}
+.div1mc{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 100px;
+}
+
+.div1mc button{
+    background-color: #D21A1A;
+    color: white;
+    height: 40px ;
+    width: 150px ;
+    border: none;
+}
+
+.div2mc{
+    margin-bottom: 50px;
+}
+
+.div2mc h2{
+    color : #478B11;
+    margin-bottom: 20px;
+}
+
+.div3mc{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    
+}
+
+.div30mc{
+    display: flex;
+    flex-direction: column;
+    background-color: #EFEEEE;
+    align-items: center;
+}
+
+.div30mc h2 {
+    color: #478B11;
+    margin-block: 30px;
+}
+
+.div30mc P {
+    font-size: 20px;
+    margin-block: 15px;
+}
+

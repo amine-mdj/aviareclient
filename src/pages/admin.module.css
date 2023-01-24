@@ -1,0 +1,18 @@
+.parsidenav{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    margin-top: 11vh;
+    height: 100%;
+}
+.sidenav{
+    height: 100%;
+    
+    background-color:mediumseagreen;
+}
+
+.sidenav li {
+    padding: 20px ;
+}
+.linkk{
+    text-decoration: none;
+}

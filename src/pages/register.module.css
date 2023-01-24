@@ -1,0 +1,50 @@
+.log div{
+    background-color: #F8F8F8;
+    border-radius: 5%;
+    padding-inline: 30px;
+  }
+  
+  .log h1{
+      font-size: 1.4em;
+      font-weight: 400;
+      margin: 25px 0;
+  }
+  
+  .log{
+    margin-top: 30vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-inline: 70px;
+      grid-gap: 50px;
+  
+  }
+  
+  .log div:nth-child(2) button{
+      padding: 15px 30px;
+      margin: 15px 0;
+      border: none;
+      border-radius: 20px;
+      background-color: #68C05A;
+      color: white;
+  }
+  
+  .log div:nth-child(1) input[type=submit]{
+      padding: 15px 30px;
+      margin: 15px 0;
+      border: none;
+      border-radius: 20px;
+      background-color: #68C05A;
+      color: white;
+  }
+.inputicons{
+    padding: 30px 30px;
+}
+.inputField{
+    border: none;
+    background-color: #F2F2F2;
+    
+}
+.icon{
+    color: grey;
+    margin-right: 5px;
+}

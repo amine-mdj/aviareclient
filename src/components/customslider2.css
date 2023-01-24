@@ -1,0 +1,19 @@
+.bluepara{
+    color: #00737A;
+    font-weight: 700;
+    font-size: large;
+  }
+.custom2{
+    position: absolute;
+    top: 60px ;
+    left: 100px ;
+  }
+ 
+  .outerdiv2{
+    position: relative;
+    height: 100vh;
+}
+
+.image2{
+  margin-left: 300px;
+}

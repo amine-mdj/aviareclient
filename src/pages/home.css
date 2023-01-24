@@ -1,0 +1,43 @@
+.main{
+    margin-top: 30vh;
+}
+.nextarrow{
+    width: 45px;
+    height: 45px;
+    margin-right: 50px;
+    background-color: black;
+    background-image: url("../img/forward.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 60%;
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    z-index: 3;
+    border-radius: 50%;
+}
+.nextarrow:hover{
+    background-color: #84B540;
+    opacity: 100%;
+}
+
+.prevarrow{
+    width: 45px;
+    height: 45px;
+    margin-left: 50px;
+    background-color: black;
+    background-image: url("../img/forward.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 60%;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    border-radius: 50%;
+    z-index: 3;
+    transform: scaleX(-1);
+}
+.prevarrow:hover{
+    background-color: #84B540;
+    opacity: 100%;
+}

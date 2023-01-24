@@ -1,0 +1,96 @@
+import React, {useState} from 'react'
+import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
+
+import { login, reset } from '../features/auth/authSlice'
+import styles from './login.module.css'
+
+const Login = ()=>{
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const navigate = useNavigate()
+
+
+    
+
+    const onemailChange = (e) => {
+        setEmail(e.target.value)
+      }
+
+      const onpasswordChange = (e) => {
+        setPassword(e.target.value)
+      }
+
+      const handleclick = ()=>{
+        navigate('/register')
+      }
+    
+      const onSubmit = (e) => {
+        e.preventDefault()
+        
+        const user2 = {
+          email: email,
+          password:password,
+        }
+        
+          axios.post('http://localhost:8000/login', user2)
+          .then(function (response) {
+            console.log(response)
+            if (response.status == 200)
+            {
+              
+              localStorage.setItem('user', JSON.stringify(response.data.user2)) 
+              navigate('/moncompte')
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    
+        
+      }
+
+    return (<div className={styles.log}>
+        <div>
+            <h1>Je me connecte</h1>
+            <form onSubmit={onSubmit}>
+             <label>*Votre adresse e-mail</label><br/>
+             <div style={{backgroundColor:'#F2F2F2',
+              display:'inline-block',
+               padding:'5px 10px',
+               borderRadius:'20px',
+               margin:'10px 0'
+               }} >
+             <i className="fa-regular fa-envelope icon"></i>
+             <input className={styles.inputField}  type="email"
+             value={email}
+             onChange={onemailChange}/>
+             </div><br/>
+             <div ></div>
+             <label>*Votre mot de passe</label><br/>
+             <div style={{backgroundColor:'#F2F2F2',
+              display:'inline-block',
+               padding:'5px 10px',
+               borderRadius:'20px',
+               margin:'10px 0'
+               }} >
+             <i className="fa-solid fa-lock icon"></i>
+             <input className={styles.inputField}  type="password"
+             value={password}
+             onChange={onpasswordChange}/>
+             
+             </div>
+             <p>mot de passe oublié</p>
+             <input type="submit" value="ME CONNECTER"/><br/>
+            </form>
+        </div>
+        <div>
+            <h1>Je crée mon compte</h1>
+            <p>Bienvenue chez aviaire<br/>
+            faisons connaissance </p>
+            <button onClick={handleclick}>Je crée mon compte</button>
+        </div>
+    </div>)
+}
+
+export default Login

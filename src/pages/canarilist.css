@@ -1,0 +1,53 @@
+
+
+
+
+.canarilist{
+    
+    margin-inline: 150px;
+    margin-top: 20vh;
+    display : grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.bbreadcrumbs{
+    text-align: center;
+}
+
+.btnpag{
+    background-color: burlywood;
+    color:sienna;
+    border-radius: 50%;
+    border: 1px solid sienna;
+    
+}
+
+.filterbox{
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.pricebox{
+    margin-top: 16vh;
+    margin-left: 20px;
+}
+
+.pricebox h2{
+    color: #5A4E23;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.pricebox p{
+    margin-bottom: 5px;
+}
+
+.pagination{
+    text-align: center;
+}
+
+.pagination button{
+    margin: 30px;
+    height: 30px;
+    width: 50px;
+}
