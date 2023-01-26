@@ -52,6 +52,7 @@ const Login = ()=>{
 
     return (<div className={styles.log}>
         <div>
+          <div className={styles.innerdivv1}>
             <h1>Je me connecte</h1>
             <form onSubmit={onSubmit}>
              <label>*Votre adresse e-mail</label><br/>
@@ -83,12 +84,15 @@ const Login = ()=>{
              <p>mot de passe oublié</p>
              <input type="submit" value="ME CONNECTER"/><br/>
             </form>
+            </div>
         </div>
         <div>
+          <div className={styles.innerdivv2}>
             <h1>Je crée mon compte</h1>
             <p>Bienvenue chez aviaire<br/>
             faisons connaissance </p>
-            <button onClick={handleclick}>Je crée mon compte</button>
+            <button onClick={handleclick}>CREER MON COMPTE</button>
+            </div>
         </div>
     </div>)
 }

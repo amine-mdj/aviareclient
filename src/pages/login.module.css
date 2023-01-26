@@ -1,7 +1,7 @@
-.log div{
-  background-color: #F8F8F8;
+.log > div{
+  
   border-radius: 5%;
-  padding-inline: 30px;
+  padding: 30px;
 }
 
 .log h1{
@@ -11,12 +11,35 @@
 }
 
 .log{
-    margin-top: 30vh;
+    margin-top: 25vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding-inline: 70px;
     grid-gap: 50px;
 
+}
+
+.innerdivv1{
+    background-color: white;
+    box-shadow: 0 0 8px #BFBFBF;
+    width: 300px;
+    padding: 30px;
+}
+
+.innerdivv1  p {
+    color: #338A91;
+    text-decoration: underline;
+}
+
+.innerdivv2 > p {
+    color: #767676;
+    }
+
+.innerdivv2{
+    background-color: white;
+    box-shadow: 0 0 8px #BFBFBF;
+    width: 300px;
+    padding: 30px;
 }
 
 .log div:nth-child(2) button{
