@@ -35,6 +35,27 @@ $radius: 0.2rem;
   background-color: aquamarine;
 }
 
+.langue{
+  margin-right: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.langue p{
+  color: #54853D;
+  margin-top: 11px;
+  cursor: pointer;
+  }
+
+  .langue i{
+    margin-right: 5px;
+    color: #54853D;
+    margin-top: 7px;
+    cursor: pointer;
+    }
+
+
+
 .nav2{
   height: 18vh;
   background-image: url("../img/Bird2.jpg");

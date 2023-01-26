@@ -74,7 +74,8 @@ const Navbar = ()=>{
     return (<div>
         <div className={styles.nav1}>
          <i onClick={handleClick} class="fa-regular fa-user fa-lg"><p>mon compte</p></i>
-            </div>
+         <div className={styles.langue}><i onClick={handleClick} style={{fontSize:'1.3em'}} class="bi bi-translate"></i><p>langues</p></div>
+         </div>
         <div className={styles.nav2}>
         <div className={styles.searchcontainer}>
         <input value={search} onChange={handleChange} type="text" id="fname" name="fname" placeholder='Rechercher dans le catalogue'/>
