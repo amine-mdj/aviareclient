@@ -1,4 +1,5 @@
 import {useState ,useEffect} from 'react'
+import {useQuery} from 'react-query'
 import Singlecanari from '../components/Singlecanari'
 import Breadcrumbs from '../components/Breadcrumbs'
 import './canarilist.css'
@@ -34,24 +35,34 @@ const StyledTrack = styled.div`
 const Track = (props, state) => <StyledTrack {...props} index={state.index} />
 
 
-
+const fetchData = (page) => {
+  return axios.get(`http://localhost:8000/canarilist?page=${page}`)
+}
 
 
 const Canarilist = ()=>{
-  const [value, setValue] = useState([0, 100])
-  const [data, setData] = useState([])
-  const [numberofpages, setNumberofpages] = useState(0)
   const [page, setPage] = useState(0)
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8000/canarilist?page=${page}`)
-      .then((res) =>{
+
+  const {data} = useQuery(['data-perpage', page],()=> fetchData(page),{
+    keepPreviousData:true,
+    
+  } )
+  const [value, setValue] = useState([0, 100])
+  const [data2, setData2] = useState([])
+  const [numberofpages, setNumberofpages] = useState(0)
+  
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://localhost:8000/canarilist?page=${page}`)
+  //     .then((res) =>{
       
-      setData(res.data.allDatacvrt)
-      setNumberofpages(res.data.numberofpages)
-      })
-      .catch((err) => console.log(err, "it has an error"));
-  },[page]);
+  //     setData2(res.data.allDatacvrt)
+  //     setNumberofpages(res.data.numberofpages)
+  //     })
+  //     .catch((err) => console.log(err, "it has an error"));
+  // },[page]);
+
+  console.log(data)
 
   const handleprev = ()=>{
       setPage(p =>{
@@ -65,7 +76,7 @@ const Canarilist = ()=>{
         return p+1;})
   }
 
-    const items = data.map(item => <Singlecanari image={item.b64} title={item.title} price={item.price}/>)
+    const items = data?.data.allDatacvrt.map(item => <Singlecanari image={item.b64} title={item.title} price={item.price}/>)
 
 
     return (<div className='oouterdiv'>

@@ -4,6 +4,8 @@ import {
   Route
 } from "react-router-dom"
 
+import { QueryClientProvider, QueryClient } from "react-query";
+
 import './app1.scss';
 
 import Navbar from "./components/Navbar"
@@ -22,9 +24,11 @@ import Utilisateures from "./pages/admin/Utilisateures";
 import Oiseaux from "./pages/admin/Oiseaux";
 import Admin from "./pages/Admin";
 
+ const queryclient = new QueryClient()
 
 function App() {
   return (
+    <QueryClientProvider client={queryclient}>
     <Router>
       <Navbar />
       <div className="container mainhome">
@@ -52,6 +56,7 @@ function App() {
       </div>
       <Footer />
     </Router>
+    </QueryClientProvider>
   );
 }
 
