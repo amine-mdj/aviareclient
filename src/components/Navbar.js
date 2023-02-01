@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from 'react'
-import {useNavigate, NavLink} from 'react-router-dom'
+import {useNavigate,useLocation, NavLink} from 'react-router-dom'
 import axios from 'axios'
 import styles from './navbar.module.scss'
 
 const Navbar = ()=>{
+  const location = useLocation()
   const [data, setData] = useState('empty')
   const [search, setSearch] = useState('')
   const Navigate = useNavigate()
   const user = localStorage.getItem('user');
+  const result = location.pathname.includes('admin')
+  
   const navLinkStyles = ({isActive}) =>{
     return {
       fontWeight: isActive? 'bold' : 'normal'
@@ -24,9 +27,9 @@ const Navbar = ()=>{
   const handleClick2 = ()=>{
     Navigate('/')
   }
-
+ 
   useEffect(()=>{
-    console.log(search)
+    
     const controller = new AbortController();
     if (search !== ''){
       
@@ -70,7 +73,7 @@ const Navbar = ()=>{
     </div> : null
   
   
-  
+  if(!result){
     return (<div>
         <div className={styles.nav1}>
          <i onClick={handleClick} class="fa-regular fa-user fa-lg"><p>mon compte</p></i>
@@ -116,7 +119,7 @@ const Navbar = ()=>{
       <li className={styles.nav__listitem}><NavLink style={navLinkStyles} className={styles.linkstyle} to='/qui-sommes-nous'>QUI SOMME NOUS</NavLink></li>
     </ul>
   </nav>
-    </div>)
+    </div>)}
 }
 
 export default Navbar
