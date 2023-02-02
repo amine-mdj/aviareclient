@@ -19,7 +19,13 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+
+import Button from '@mui/material/Button';
+import AddIcon from '@mui/icons-material/Add';
+
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import axios from 'axios'
 import {useQuery} from 'react-query'
@@ -94,24 +100,51 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const columns = [
     {
         field: 'b64',
+        flex:1,
         headerName: 'Image',
         width: 110,
        renderCell:(params) => (<img width='50' height='50' src={`data:image/png;base64,${params.value}`}/>)
         
       },
-    { field: 'id', headerName: 'ID', width: 90 },
+
+      { field: 'id',
+        flex:1,
+        headerName: 'ID',
+     },
+
     {
         field: 'price',
+        flex:1,
         headerName: 'Price',
-        width: 150,
         editable: true,
       },
     {
       field: 'title',
+      flex:1,
       headerName: 'Title',
-      width: 150,
       editable: true,
     },
+    {
+      field: 'edit',
+      flex:1,
+      renderCell:(params) =>{
+        console.log(params)
+        return  (<Button color="primary" startIcon={<EditIcon />}   >
+      Edit
+        </Button>)}
+      
+    },
+    {
+      field: 'delete',  
+    flex:1,
+    renderCell:(params) =>{
+      console.log(params)
+       return (<Button color="error" startIcon={<DeleteIcon />}   >
+    Delete
+      </Button>)}
+    
+  },
+   
     
     
     
@@ -126,6 +159,7 @@ const Administrator = () => {
     const {data} = useQuery('data-perpage-admin',()=> fetchData() )
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+    const [pageSize, setPageSize] = React.useState(5);
     
   
     const handleDrawerOpen = () => {
@@ -137,7 +171,7 @@ const Administrator = () => {
     };
   
     return (
-      <Box sx={{ display: 'flex' }}>
+      <Box sx={{ display: 'flex', height:'100vh' }}>
         <CssBaseline />
         <AppBar position="fixed" open={open}>
           <Toolbar>
@@ -215,18 +249,24 @@ const Administrator = () => {
             ))}
           </List>
         </Drawer>
-        <Box component="main" sx={{ width: 1000,
-        height: 500, }}>
+        <Box component="main" sx={{ width: '100%',
+        height: 500, '& button': { m: 2 }  }}>
           <DrawerHeader />
+          <Button color="primary" startIcon={<AddIcon />}  sx={{ position: "relative", top: 0, right: 0, zIndex: 2000 }} >
+        ajouter un oiseaux
+          </Button>
           
           {data?.data.length>0
         ? <DataGrid
              rows={data.data}
             columns={columns}
-            
+            pageSize={pageSize}
+            onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
             rowsPerPageOptions={[5, 10, 15]}
+            pagination
             checkboxSelection
             disableSelectionOnClick
+            components={{ Toolbar: GridToolbar }}
             experimentalFeatures={{ newEditingApi: true }}
       /> : <Typography variant="h6" >No data for this church yet!</Typography>}
        
