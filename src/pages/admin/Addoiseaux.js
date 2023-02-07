@@ -16,7 +16,7 @@ const Addoiseaux = ()=>{
         formData.append('oiseauximg', oiseauximg)
         formData.append('title', title)
         formData.append('price', price)
-        axios.post("http://localhost:8000/oiseaux", formData, {
+        axios.post("http://localhost:8000/oiseaux", {formData}, {
         }).then(res => {
             console.log(res)
         })

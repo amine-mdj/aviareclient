@@ -28,7 +28,8 @@ import Addoiseaux from "./pages/admin/Addoiseaux";
 import Utilisateures from "./pages/admin/Utilisateures";
 import Oiseaux from "./pages/admin/Oiseaux";
 import Admin from "./pages/Admin";
-
+import Edit from './reactadminframwork/edit'
+import Oiseauxshow from './reactadminframwork/oiseauxshow'
 const Administrator = React.lazy(() => import('./reactadminframwork/Administrator'))
 
  const queryclient = new QueryClient()
@@ -50,10 +51,19 @@ function App() {
           <Route element={<Requireadmin/>}><Route path="/admin/create" element={<Addoiseaux />} /></Route>
 
           <Route element={<Requireadmin/>}>
-            <Route path="/admin/*" element={
+            <Route path="/admin/" element={
           <Suspense fallback={<div>Loading...</div>}>
             <Administrator/>
-          </Suspense>} />
+          </Suspense>} >
+          <Route
+          path="oiseauxshow"
+          element={<Oiseauxshow />}
+        />
+          <Route
+          path="edit/:id"
+          element={<Edit />}
+        />
+          </Route>
           </Route>
 
 
