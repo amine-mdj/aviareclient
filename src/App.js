@@ -29,7 +29,10 @@ import Utilisateures from "./pages/admin/Utilisateures";
 import Oiseaux from "./pages/admin/Oiseaux";
 import Admin from "./pages/Admin";
 import Edit from './reactadminframwork/edit'
+import Article from './reactadminframwork/article'
 import Oiseauxshow from './reactadminframwork/oiseauxshow'
+import Conseils from './pages/conseils'
+import Articledetails from "./pages/articledetails";
 const Administrator = React.lazy(() => import('./reactadminframwork/Administrator'))
 
  const queryclient = new QueryClient()
@@ -47,6 +50,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/qui-sommes-nous" element={<Quisommesnous />} />
           <Route path="/acceuil/oiseaux/canarilist" element={<Canarilist />} />
+          <Route path="/astuces-et-conseils" element={<Conseils />} />
+          <Route path="/article/:id" element={<Articledetails />} />
           <Route element={<Requireauth/>}><Route path="/moncompte" element={<Moncompte />} /></Route>
           <Route element={<Requireadmin/>}><Route path="/admin/create" element={<Addoiseaux />} /></Route>
 
@@ -58,6 +63,10 @@ function App() {
           <Route
           path="oiseauxshow"
           element={<Oiseauxshow />}
+        />
+        <Route
+          path="article"
+          element={<Article />}
         />
           <Route
           path="edit/:id"

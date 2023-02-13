@@ -50,6 +50,7 @@ const Canarilist = ()=>{
   const [value, setValue] = useState([0, 100])
   const [data2, setData2] = useState([])
   const [numberofpages, setNumberofpages] = useState(0)
+  const [open, setOpen] = useState(false)
   
   // useEffect(() => {
   //   axios
@@ -94,6 +95,10 @@ const Canarilist = ()=>{
           renderThumb={Thumb} />
           <p>prix : {value[0]} - {value[1]} euro</p>
           <button>Filtrer</button>
+          <div className='groupe'>
+          <i class="fa-solid fa-chevron-right cstm"></i>
+          <h2>filter par groupe</h2>
+          </div>
         </div>
     <div className='canarilist'>
         {items}

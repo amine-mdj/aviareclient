@@ -28,14 +28,35 @@
 }
 
 .pricebox{
+    position:sticky;
+    top:2rem;
     margin-top: 16vh;
     margin-left: 20px;
+    background-color: burlywood;
+    height: 600px;
+    
 }
+
+
 
 .pricebox h2{
     color: #5A4E23;
     margin-bottom: 10px;
     font-size: 16px;
+}
+
+.groupe{
+    margin-top: 16px;
+}
+
+.groupe h2{
+    display: inline-block;
+}
+
+.cstm{
+    color: #5A4E23;
+    display: inline-block;
+    margin-right: 8px;
 }
 
 .pricebox p{

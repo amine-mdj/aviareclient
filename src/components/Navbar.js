@@ -115,7 +115,7 @@ const Navbar = ()=>{
           <li>Cages et Volieres</li>
         </ul>
       </li>
-      <li className={styles.nav__listitem}><NavLink style={navLinkStyles} className={styles.linkstyle} to=''>ASTUCES ET CONSEILS</NavLink></li>
+      <li className={styles.nav__listitem}><NavLink style={navLinkStyles} className={styles.linkstyle} to='/astuces-et-conseils'>ASTUCES ET CONSEILS</NavLink></li>
       <li className={styles.nav__listitem}><NavLink style={navLinkStyles} className={styles.linkstyle} to='/qui-sommes-nous'>QUI SOMME NOUS</NavLink></li>
     </ul>
   </nav>

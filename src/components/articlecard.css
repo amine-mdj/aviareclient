@@ -1,0 +1,13 @@
+.article{
+    display:flex;
+    width:60%;
+    height:100px;
+}
+
+.article_title{
+    flex-grow: 5;
+}
+
+.atricle_image{
+    flex-grow: 1;
+}
