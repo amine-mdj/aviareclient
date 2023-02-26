@@ -4,20 +4,22 @@ import styles from './footer.module.css'
 import visa from '../img/visa-cc.png';
 import mastercard from '../img/mastercard-cc.png';
 import paypal from '../img/paypal-cc.png';
+import { useTranslation } from 'react-i18next';
 
 const Footer = ()=>{
+    const {t} = useTranslation(['quisn'])
     const location = useLocation()
     const result = location.pathname.includes('admin')
     if (!result){
     return (<div className={styles.footer}>
-        <p className={styles.title}>INFORMATIONS PRATIQUES</p>
+        <p className={styles.title}>{t("INFORMATIONS PRATIQUES")}</p>
         <div className={styles.grid}>
-            <p>nos services sur mesure</p>
-            <p>Conditions generales de ventes</p>
-            <p>Mentions legales</p>
-            <p>Information livraison</p>
-            <p>CGV spaciale oiseaux</p>
-            <p>Contact</p>
+            <p>{t("nos services sur mesure")}</p>
+            <p>{t("Conditions generales de ventes")}</p>
+            <p>{t("Mentions legales")}</p>
+            <p>{t("Information livraison")}</p>
+            <p>{t("CGV spaciale oiseaux")}</p>
+            <p>{t("Contact")}</p>
         </div>
        <div className={styles.flex}>
         <div className={styles.icons}>
@@ -30,7 +32,7 @@ const Footer = ()=>{
         </div>
         <div className={styles.nosmoyens}>
             <div>
-            <p>Nos moyens de paiement</p>
+            <p>{t("Nos moyens de paiement")}</p>
             <div className={styles.divimg}>
             <img src={visa} alt="visa logo" />
             <img src={mastercard} alt="mastercard logo" />

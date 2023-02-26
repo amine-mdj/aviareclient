@@ -62,7 +62,7 @@ const Login = ()=>{
                borderRadius:'20px',
                margin:'10px 0'
                }} >
-             <i className="fa-regular fa-envelope icon"></i>
+             <i className="fa-regular fa-envelope" style={{color:"grey",marginRight:"5px"}}></i>
              <input className={styles.inputField}  type="email"
              value={email}
              onChange={onemailChange}/>
@@ -75,7 +75,7 @@ const Login = ()=>{
                borderRadius:'20px',
                margin:'10px 0'
                }} >
-             <i className="fa-solid fa-lock icon"></i>
+             <i className="fa-solid fa-lock" style={{color:"grey",marginRight:"5px"}}></i>
              <input className={styles.inputField}  type="password"
              value={password}
              onChange={onpasswordChange}/>

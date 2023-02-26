@@ -43,7 +43,7 @@ const Edit = () =>{
 
     const onFileChange = (e) =>{
         setOiseauximg(e.target.files[0])
-        console.log(e.target.files[0])
+        
      }
  
     const ontitleChange = (e) =>{

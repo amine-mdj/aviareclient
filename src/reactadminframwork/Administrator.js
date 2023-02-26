@@ -107,9 +107,13 @@ const Administrator = () => {
     const [open, setOpen] = React.useState(false);
     
     
-    const handleClick = () =>{
+    const handleClick1 = () =>{
      navigate('/admin/article')
     }
+
+    const handleClick2 = () =>{
+      navigate('/admin/materialslist')
+     }
     
 
     
@@ -195,7 +199,7 @@ const Administrator = () => {
                   >
                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                   </ListItemIcon>
-                  <ListItemText primary={text} onClick={text==="Ecrire un article"? handleClick : undefined} sx={{ opacity: open ? 1 : 0 }} />
+                  <ListItemText primary={text} onClick={text==="Ecrire un article"? handleClick1 : handleClick2} sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>
             ))}

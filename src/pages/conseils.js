@@ -42,7 +42,7 @@ const Conseils = () =>{
         
         
         </div>
-        <div>
+        <div className={styles.articlecard} >
             {result}
         </div>
         </div>)

@@ -54,6 +54,30 @@ $radius: 0.2rem;
     cursor: pointer;
     }
 
+  .langul{
+    visibility: hidden;
+    position: absolute;
+    top: 40px;
+    background-color: white;
+    padding-inline: 15px;
+    padding-block: 5px;
+    z-index: 999;
+  }
+
+  .langul li {
+    list-style: none;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+
+  .langul li:hover{
+    color: red;
+  }
+
+  .langue:hover .langul{
+    visibility: visible;
+  }
+
 
 
 .nav2{

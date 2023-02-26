@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import './articlecard.css'
 
 
 const Articlecard = ({id,title, image}) => {
@@ -10,7 +11,7 @@ const Articlecard = ({id,title, image}) => {
   return (<div onClick={handleclick} className="article">
     <div className="article_title">
         <h1>{title}</h1>
-        <p>this should be the first two lines of the article ...</p>
+        
     </div >
     <div className='article_image'><img src={image}/></div>
        

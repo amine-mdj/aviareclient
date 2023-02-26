@@ -1,6 +1,6 @@
-.log div{
-    background-color: #F8F8F8;
-    border-radius: 5%;
+.log > div{
+    
+    box-shadow: 0 0 8px #BFBFBF;
     padding-inline: 30px;
   }
   
@@ -47,4 +47,8 @@
 .icon{
     color: grey;
     margin-right: 5px;
+}
+
+.errormsg{
+    color: red;
 }

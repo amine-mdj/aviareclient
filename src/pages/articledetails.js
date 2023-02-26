@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import axios from 'axios'
 import { useQuery } from 'react-query'
+import './articledetail.css'
 
 
 const fetchData = (id) => {
@@ -12,7 +13,7 @@ const Articledetails = () =>{
     const {data} = useQuery(['article', id],()=> fetchData(id) )
     
 
-    return (<div dangerouslySetInnerHTML={{__html:data?.data.content}}>
+    return (<div className="detailmain" dangerouslySetInnerHTML={{__html:data?.data.content}}>
        
     </div>)
 }
