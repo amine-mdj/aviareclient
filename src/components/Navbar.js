@@ -9,7 +9,7 @@ const Navbar = ()=>{
   const [data, setData] = useState('empty')
   const [search, setSearch] = useState('')
   const Navigate = useNavigate()
-  const user = localStorage.getItem('user');
+  const accesstoken = localStorage.getItem('accesstoken');
   const result = location.pathname.includes('admin')
 
   const {i18n, t} = useTranslation(['common'])
@@ -20,7 +20,7 @@ const Navbar = ()=>{
     }
   }
   const handleClick = () =>{
-    if (user == null){
+    if (accesstoken == null){
     Navigate('/login')
     }else{
       Navigate('/moncompte')

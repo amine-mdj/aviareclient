@@ -2,9 +2,10 @@ import { Navigate, Outlet} from 'react-router-dom'
 
 
 const Requireauth = ({children}) =>{
-    const user = localStorage.getItem('user')
+    const accesstoken = localStorage.getItem('accesstoken')
+    console.log('from require auth' + accesstoken)
     return(
-        user == null ? <Navigate to='/login' /> : <Outlet/>
+        accesstoken == null ? <Navigate to='/login' /> : <Outlet/>
     )
       
     

@@ -7,7 +7,7 @@ import paypal from '../img/paypal-cc.png';
 import { useTranslation } from 'react-i18next';
 
 const Footer = ()=>{
-    const {t} = useTranslation(['quisn'])
+    const {t} = useTranslation(['footer'])
     const location = useLocation()
     const result = location.pathname.includes('admin')
     if (!result){

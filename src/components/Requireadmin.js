@@ -1,11 +1,13 @@
 import { Navigate, Outlet} from 'react-router-dom'
+import jwt_decode from "jwt-decode";
 
 
 const Requireadmin = ({children}) =>{
-    const user = JSON.parse(localStorage.getItem('user'))
-    
+    const accesstoken = JSON.parse(localStorage.getItem('accesstoken'))
+    const user = jwt_decode(accesstoken)
+    console.log('from require admin' + user.role)
     return(
-        user?.role !== 'admin' ? <Navigate to='/login' /> : <Outlet/>
+        user?.role !== 'admin' ? <Navigate to='/' /> : <Outlet/>
     )
       
     

@@ -6,7 +6,7 @@ const Moncompte = () => {
     const navigate = useNavigate()
 
 const handleclick = () =>{
-    localStorage.removeItem('user')
+    localStorage.removeItem('accesstoken')
     navigate('/login')
 }
 
