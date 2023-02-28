@@ -7,7 +7,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import {useQuery} from 'react-query'
+import {useQuery, useMutation} from 'react-query'
 import { useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
@@ -26,6 +26,9 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 const Materialslist = () =>{
     const {data} = useQuery('data-perpage-admin',()=> fetchData() )
+    const deletemat = useMutation((id) => {
+      return axios.delete(`http://localhost:8000/material/${id}`);
+    });
     const [pageSize, setPageSize] = React.useState(5);
     const navigate = useNavigate()
     
@@ -33,6 +36,16 @@ const Materialslist = () =>{
     const handleadd = ()=>{
         navigate('/admin/addmateriel')
     }
+
+    const handleEdit = (mat) => {
+      navigate(`/admin/materialedit/${mat.id}`, {state: mat})
+    
+  }
+
+  const handleDelete = (mat) => {
+    deletemat.mutate(mat.id)
+  
+}
     
 
     const columns = React.useMemo(()=> [
@@ -67,7 +80,7 @@ const Materialslist = () =>{
           flex:1,
           renderCell:(params) =>{
               
-            return  (<Button  color="primary"  startIcon={<EditIcon />}   >
+            return  (<Button  color="primary" onClick={()=>handleEdit(params.row)}  startIcon={<EditIcon />}   >
           Edit
             </Button>)}
           
@@ -75,9 +88,9 @@ const Materialslist = () =>{
         {
           field: 'delete',  
         flex:1,
-        renderCell:() =>{
+        renderCell:(params) =>{
           
-           return (<Button color="error" startIcon={<DeleteIcon />}   >
+           return (<Button color="error" onClick={()=>handleDelete(params.row)} startIcon={<DeleteIcon />}   >
         Delete
           </Button>)}
         

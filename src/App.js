@@ -1,44 +1,42 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route
-} from "react-router-dom"
-
+import { BrowserRouter as Router,Routes,Route} from "react-router-dom"
 import React, { Suspense } from 'react'
-
 import { QueryClientProvider, QueryClient } from "react-query";
-
 import './app1.scss';
 
 
-
+// ------------------- common components ----------------------------------
 
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer";
 import Requireauth from "./components/Requireauth"
 import Requireadmin from "./components/Requireadmin"
 
+// ------------------------- guest routes ------------------------------
+
 import Home from "./pages/Home";
 import Quisommesnous from "./pages/Quisommenous";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Canarilist from "./pages/Canarilist";
-import Moncompte from "./pages/Moncompte";
-import Addoiseaux from "./pages/admin/Addoiseaux";
-import Utilisateures from "./pages/admin/Utilisateures";
-import Oiseaux from "./pages/admin/Oiseaux";
-import Admin from "./pages/Admin";
-import Edit from './reactadminframwork/edit'
-import Article from './reactadminframwork/article'
-import Addmateriels from './reactadminframwork/addmateriel'
-import Oiseauxshow from './reactadminframwork/oiseauxshow'
-import Materialslist from './reactadminframwork/materialslist'
 import Conseils from './pages/conseils'
 import Materiels from './pages/materiels'
 import Articledetails from "./pages/articledetails";
+
+// ----------------- user routes ------------------------------------------
+
+import Moncompte from "./pages/Moncompte";
+
+// ------------- admin routes --------------------------------
+import OiseauxEdit from './reactadminframwork/oiseauxedit'
+import MaterialEdit from './reactadminframwork/materialedit'
+import Article from './reactadminframwork/article'
+import Addmateriels from './reactadminframwork/addmateriel'
+import AddOiseaux from './reactadminframwork/addoiseaux'
+import Oiseauxshow from './reactadminframwork/oiseauxshow'
+import Materialslist from './reactadminframwork/materialslist'
 const Administrator = React.lazy(() => import('./reactadminframwork/Administrator'))
 
- const queryclient = new QueryClient()
+const queryclient = new QueryClient()
 
 function App() {
   return (
@@ -58,7 +56,7 @@ function App() {
           <Route path="/acceuil/materiels" element={<Materiels />} />
           <Route path="/article/:id" element={<Articledetails />} />
           <Route element={<Requireauth/>}><Route path="/moncompte" element={<Moncompte />} /></Route>
-          <Route element={<Requireadmin/>}><Route path="/admin/create" element={<Addoiseaux />} /></Route>
+          
 
           <Route element={<Requireadmin/>}>
             <Route path="/admin/" element={
@@ -78,28 +76,24 @@ function App() {
           element={<Addmateriels />}
         />
         <Route
+          path="addoiseaux"
+          element={<AddOiseaux />}
+        />
+        <Route
           path="materialslist"
           element={<Materialslist />}
         />
           <Route
-          path="edit/:id"
-          element={<Edit />}
+          path="oiseauxedit/:id"
+          element={<OiseauxEdit />}
+        />
+         <Route
+          path="materialedit/:id"
+          element={<MaterialEdit />}
         />
           </Route>
           </Route>
-
-
-          {/* <Route element={<Requireadmin/>}>
-            <Route path="/admin/*" element={<Admin/>} >
-            <Route path="utilisateurs" element={<Utilisateures/>} />
-            <Route path="oiseaux" element={<Oiseaux/>} />
-             </Route>
-          </Route> */}
-
-
-          
-          
-        </Routes>
+         </Routes>
       </div>
       <Footer />
     </Router>

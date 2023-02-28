@@ -26,7 +26,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     return axios.put(`http://localhost:8000/canari/${data.id}`, data.formData)
   }
 
-const Edit = () =>{
+const OiseauxEdit = () =>{
     const {state} = useLocation();
     const byteCharacters = atob(state.b64);
     const byteNumbers = new Array(byteCharacters.length);
@@ -139,4 +139,4 @@ const Edit = () =>{
       </Box>)
 }
 
-export default Edit
+export default OiseauxEdit

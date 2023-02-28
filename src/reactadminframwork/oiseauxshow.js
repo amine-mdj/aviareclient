@@ -7,7 +7,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import {useQuery} from 'react-query'
+import {useQuery, useMutation} from 'react-query'
 import { useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
@@ -26,13 +26,25 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 const Oiseauxshow = () =>{
     const {data} = useQuery('data-perpage-admin',()=> fetchData() )
+    const deleteoiseaux = useMutation((id) => {
+      return axios.delete(`http://localhost:8000/canari/${id}`);
+    });
     const [pageSize, setPageSize] = React.useState(5);
     const navigate = useNavigate()
 
+    const handleadd = ()=>{
+      navigate('/admin/addoiseaux')
+  }
+
     const handleEdit = (oiseaux) => {
-        navigate(`/admin/edit/${oiseaux.id}`, {state: oiseaux})
+        navigate(`/admin/oiseauxedit/${oiseaux.id}`, {state: oiseaux})
       
     }
+
+    const handleDelete = (oiseaux) => {
+      deleteoiseaux.mutate(oiseaux.id)
+    
+  }
 
     const columns = React.useMemo(()=> [
         {
@@ -74,9 +86,9 @@ const Oiseauxshow = () =>{
         {
           field: 'delete',  
         flex:1,
-        renderCell:() =>{
+        renderCell:(params) =>{
           
-           return (<Button color="error" startIcon={<DeleteIcon />}   >
+           return (<Button color="error" onClick={()=>handleDelete(params.row)} startIcon={<DeleteIcon />}   >
         Delete
           </Button>)}
         
@@ -90,7 +102,7 @@ const Oiseauxshow = () =>{
     return(<Box component="main" sx={{ width: '100%',
     height: 500, '& button': { m: 2 }  }}>
       <DrawerHeader />
-      <Button color="primary" startIcon={<AddIcon />}  sx={{ position: "relative", top: 0, right: 0, zIndex: 2000 }} >
+      <Button color="primary" onClick={handleadd} startIcon={<AddIcon />}  sx={{ position: "relative", top: 0, right: 0, zIndex: 2000 }} >
     ajouter un oiseaux
       </Button>
       
