@@ -21,7 +21,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   }));
 
   const addDatamat = (data) => {
-    return axios.post('http://localhost:8000/materiels/', data.formData)
+    return axios.post('http://localhost:8000/materiels/', data.formData, data.config)
   }
 
 
@@ -31,6 +31,14 @@ const Addmateriel = ()=>{
     const [title, setTitle] = useState("")
     const [price, setPrice] = useState("")
     const {mutate:updateoiseaux} = useMutation(addDatamat)
+
+    const token = localStorage.getItem("accesstoken")
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
 
 
     const onFileChange = (e) =>{
@@ -52,7 +60,7 @@ const Addmateriel = ()=>{
         formData.append('matimg', matimg)
         formData.append('title', title)
         formData.append('price', price)
-         const mutatedata =  {formData: formData}
+         const mutatedata =  {formData: formData, config: config}
         updateoiseaux(mutatedata)
     }
 

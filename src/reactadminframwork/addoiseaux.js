@@ -21,7 +21,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   }));
 
   const addDataoiseaux = (data) => {
-    return axios.post('http://localhost:8000/canari/', data.formData)
+    return axios.post('http://localhost:8000/canari/', data.formData, data.config)
   }
 
 
@@ -31,6 +31,14 @@ const AddOiseaux = ()=>{
     const [title, setTitle] = useState("")
     const [price, setPrice] = useState("")
     const {mutate:updateoiseaux} = useMutation(addDataoiseaux)
+
+    const token = localStorage.getItem("accesstoken")
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
 
 
     const onFileChange = (e) =>{
@@ -52,7 +60,7 @@ const AddOiseaux = ()=>{
         formData.append('oiseauximg', oiseauximg)
         formData.append('title', title)
         formData.append('price', price)
-         const mutatedata =  {formData: formData}
+         const mutatedata =  {formData: formData, config:config}
         updateoiseaux(mutatedata)
     }
 

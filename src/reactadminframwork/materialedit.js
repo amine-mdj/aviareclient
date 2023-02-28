@@ -23,7 +23,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   }));
 
   const updateData = (data) => {
-    return axios.put(`http://localhost:8000/material/${data.id}`, data.formData)
+    return axios.put(`http://localhost:8000/material/${data.id}`, data.formData, data.config)
   }
 
 const MaterialEdit = () =>{
@@ -39,7 +39,15 @@ const MaterialEdit = () =>{
     const [title, setTitle] = useState(state.title)
     const [price, setPrice] = useState(state.price)
     const {mutate:updatemat} = useMutation(updateData)
+
     
+    const token = localStorage.getItem("accesstoken")
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
 
     const onFileChange = (e) =>{
         setMatimg(e.target.files[0])
@@ -60,7 +68,7 @@ const MaterialEdit = () =>{
         formData.append('matimg', matimg)
         formData.append('title', title)
         formData.append('price', price)
-         const mutatedata =  {formData: formData, id: state.id}
+         const mutatedata =  {formData: formData, id: state.id, config: config}
         updatemat(mutatedata)
     }
 

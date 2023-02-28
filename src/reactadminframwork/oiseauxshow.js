@@ -26,8 +26,17 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 const Oiseauxshow = () =>{
     const {data} = useQuery('data-perpage-admin',()=> fetchData() )
+
+    const token = localStorage.getItem("accesstoken")
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+
     const deleteoiseaux = useMutation((id) => {
-      return axios.delete(`http://localhost:8000/canari/${id}`);
+      return axios.delete(`http://localhost:8000/canari/${id}`, config);
     });
     const [pageSize, setPageSize] = React.useState(5);
     const navigate = useNavigate()

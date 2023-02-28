@@ -22,6 +22,14 @@ const Article = () =>{
   const [title, setTitle] = useState('')
   const { quill, quillRef } = useQuill()
 
+  const token = localStorage.getItem("accesstoken")
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+
 
 
   const ontitleChange = (e) =>{
@@ -33,7 +41,7 @@ const Article = () =>{
   const onSubmit = (e) => {
     e.preventDefault()
     const article = quillRef.current.firstChild.innerHTML
-     axios.post('http://localhost:8000/article',{article: article, title: title})
+     axios.post('http://localhost:8000/article',{article: article, title: title}, config)
     
     
 }

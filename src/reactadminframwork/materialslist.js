@@ -26,8 +26,16 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 const Materialslist = () =>{
     const {data} = useQuery('data-perpage-admin',()=> fetchData() )
+
+    const token = localStorage.getItem("accesstoken")
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
     const deletemat = useMutation((id) => {
-      return axios.delete(`http://localhost:8000/material/${id}`);
+      return axios.delete(`http://localhost:8000/material/${id}`, config);
     });
     const [pageSize, setPageSize] = React.useState(5);
     const navigate = useNavigate()
