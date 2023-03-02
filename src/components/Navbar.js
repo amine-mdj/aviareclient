@@ -37,7 +37,7 @@ const Navbar = ()=>{
     if (search !== ''){
       
       axios
-    .get(`http://localhost:8000/canarilistsearch?search=${search}`,{
+    .get(`http://localhost:8000/guest/allsearch?search=${search}`,{
       signal: controller.signal
     })
     .then((res) =>{

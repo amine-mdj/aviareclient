@@ -36,7 +36,7 @@ const Track = (props, state) => <StyledTrack {...props} index={state.index} />
 
 
 const fetchData = (page) => {
-  return axios.get(`http://localhost:8000/canarilist?page=${page}`)
+  return axios.get(`http://localhost:8000/guest/paginatedCanari?page=${page}`)
 }
 
 

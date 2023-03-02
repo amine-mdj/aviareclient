@@ -5,7 +5,7 @@ import './articledetail.css'
 
 
 const fetchData = (id) => {
-    return axios.get(`http://localhost:8000/1article/${id}`)
+    return axios.get(`http://localhost:8000/guest/articles/${id}`)
   }
 
 const Articledetails = () =>{

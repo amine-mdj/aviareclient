@@ -41,7 +41,7 @@ const Article = () =>{
   const onSubmit = (e) => {
     e.preventDefault()
     const article = quillRef.current.firstChild.innerHTML
-     axios.post('http://localhost:8000/article',{article: article, title: title}, config)
+     axios.post('http://localhost:8000/articles',{article: article, title: title}, config)
     
     
 }

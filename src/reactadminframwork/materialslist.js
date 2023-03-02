@@ -35,7 +35,7 @@ const Materialslist = () =>{
       },
     }
     const deletemat = useMutation((id) => {
-      return axios.delete(`http://localhost:8000/material/${id}`, config);
+      return axios.delete(`http://localhost:8000/materials/${id}`, config);
     });
     const [pageSize, setPageSize] = React.useState(5);
     const navigate = useNavigate()

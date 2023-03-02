@@ -33,7 +33,7 @@ const Login = ()=>{
           password:password,
         }
         
-          axios.post('http://localhost:8000/login', user2)
+          axios.post('http://localhost:8000/auth/login', user2)
           .then(function (response) {
             console.log(response)
             if (response.status == 200)
