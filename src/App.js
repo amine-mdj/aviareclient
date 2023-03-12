@@ -1,5 +1,6 @@
 import { BrowserRouter as Router,Routes,Route} from "react-router-dom"
 import React, { Suspense } from 'react'
+import axios from 'axios'
 import { QueryClientProvider, QueryClient } from "react-query";
 import './app1.scss';
 
@@ -22,6 +23,10 @@ import Conseils from './pages/conseils'
 import Materiels from './pages/materiels'
 import Articledetails from "./pages/articledetails";
 
+import Testoauth1 from "./pages/testoauth1";
+import Testoauth2 from "./pages/testoauth2";
+
+
 // ----------------- user routes ------------------------------------------
 
 import Moncompte from "./pages/Moncompte";
@@ -39,6 +44,9 @@ const Administrator = React.lazy(() => import('./reactadminframwork/Administrato
 const queryclient = new QueryClient()
 
 function App() {
+
+  axios.defaults.withCredentials = true
+
   return (
     <QueryClientProvider client={queryclient}>
       <Suspense fallback={null}>
@@ -49,6 +57,8 @@ function App() {
           
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/testoauth1" element={<Testoauth1 />} />
+          <Route path="/testoauth2" element={<Testoauth2 />} />
           <Route path="/register" element={<Register />} />
           <Route path="/qui-sommes-nous" element={<Quisommesnous />} />
           <Route path="/acceuil/oiseaux/canarilist" element={<Canarilist />} />

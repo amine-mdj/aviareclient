@@ -24,6 +24,10 @@ const Login = ()=>{
       const handleclick = ()=>{
         navigate('/register')
       }
+
+      const handlegoogleauth = ()=>{
+        window.open("http://localhost:8000/auth/google", "_self");
+      }
     
       const onSubmit = (e) => {
         e.preventDefault()
@@ -53,6 +57,7 @@ const Login = ()=>{
     return (<div className={styles.log}>
         <div>
           <div className={styles.innerdivv1}>
+            <button onClick={handlegoogleauth}>Se connecter avec google</button>
             <h1>Je me connecte</h1>
             <form onSubmit={onSubmit}>
              <label>*Votre adresse e-mail</label><br/>

@@ -36,6 +36,7 @@ const Oiseauxshow = () =>{
     }
 
     const deleteoiseaux = useMutation((id) => {
+      
       return axios.delete(`http://localhost:8000/canari/${id}`, config);
     });
     const [pageSize, setPageSize] = React.useState(5);
@@ -50,10 +51,7 @@ const Oiseauxshow = () =>{
       
     }
 
-    const handleDelete = (oiseaux) => {
-      deleteoiseaux.mutate(oiseaux.id)
-    
-  }
+   
 
     const columns = React.useMemo(()=> [
         {
@@ -97,7 +95,7 @@ const Oiseauxshow = () =>{
         flex:1,
         renderCell:(params) =>{
           
-           return (<Button color="error" onClick={()=>handleDelete(params.row)} startIcon={<DeleteIcon />}   >
+           return (<Button color="error" onClick={()=>deleteoiseaux.mutate(params.row.id)} startIcon={<DeleteIcon />}   >
         Delete
           </Button>)}
         
