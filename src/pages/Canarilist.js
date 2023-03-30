@@ -77,15 +77,28 @@ const Canarilist = ()=>{
         return p+1;})
   }
 
+  const showfilter = () => {
+    const pricebox = document.getElementsByClassName('pricebox')
+    pricebox[0].style.bottom = 0
+  }
+
+  const hidefilter = () => {
+    const pricebox = document.getElementsByClassName('pricebox')
+    pricebox[0].style.bottom = '-100%'
+  
+  }
+
     const items = data?.data.allDatacvrt.map(item => <Singlecanari image={item.b64} title={item.title} price={item.price}/>)
 
 
     return (<div className='oouterdiv'>
+      <div className='filterbottom'><button onClick={showfilter}>Filtrer</button></div>
       <div className='bbreadcrumbs'>
       <Breadcrumbs/>
       </div>
       <div className='filterbox'>
         <div className='pricebox'>
+          <div className='closebtn'><button onClick={hidefilter}>Fermer</button></div>
           <h2>Filtrer par tarif</h2>
           <p>utiliser le slider svp</p>
           <StyledSlider  

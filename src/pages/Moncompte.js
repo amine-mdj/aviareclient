@@ -6,8 +6,16 @@ const Moncompte = () => {
     const navigate = useNavigate()
 
 const handleclick = () =>{
-    localStorage.removeItem('accesstoken')
-    navigate('/login')
+    const accesstoken = localStorage.getItem('accesstoken')
+    if (accesstoken !== null){
+        localStorage.removeItem('accesstoken')
+        navigate('/login')
+    }
+    else {
+        window.open("http://localhost:8000/auth/logout", "_self");
+    }
+    
+    
 }
 
 

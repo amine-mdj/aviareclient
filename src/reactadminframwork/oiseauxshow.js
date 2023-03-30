@@ -20,12 +20,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     ...theme.mixins.toolbar,
   }));
 
-  const fetchData = () => {
-    return axios.get("http://localhost:8000/canari")
+  const fetchData = (config) => {
+    return axios.get("http://localhost:8000/canari", config)
   }
 
 const Oiseauxshow = () =>{
-    const {data} = useQuery('data-perpage-admin',()=> fetchData() )
+    
 
     const token = localStorage.getItem("accesstoken")
 
@@ -34,6 +34,9 @@ const Oiseauxshow = () =>{
         Authorization: `Bearer ${token}`,
       },
     }
+
+    const {data} = useQuery('data-perpage-admin',()=> fetchData(config) )
+    console.log(token)
 
     const deleteoiseaux = useMutation((id) => {
       

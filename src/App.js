@@ -24,7 +24,7 @@ import Materiels from './pages/materiels'
 import Articledetails from "./pages/articledetails";
 
 import Testoauth1 from "./pages/testoauth1";
-import Testoauth2 from "./pages/testoauth2";
+
 
 
 // ----------------- user routes ------------------------------------------
@@ -46,6 +46,16 @@ const queryclient = new QueryClient()
 function App() {
 
   axios.defaults.withCredentials = true
+  axios.interceptors.response.use(response => response,
+    async(error)=>{
+      const originalConfig = error.config;
+     if (error.response.status === 403){
+     const {newaccesstoken} = await axios.get("http://localhost:8000/auth/refresh")
+     localStorage.setItem("accesstoken", newaccesstoken)
+     return axios(originalConfig)
+     }
+     return Promise.reject(error)
+    })
 
   return (
     <QueryClientProvider client={queryclient}>
@@ -58,7 +68,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/testoauth1" element={<Testoauth1 />} />
-          <Route path="/testoauth2" element={<Testoauth2 />} />
           <Route path="/register" element={<Register />} />
           <Route path="/qui-sommes-nous" element={<Quisommesnous />} />
           <Route path="/acceuil/oiseaux/canarilist" element={<Canarilist />} />

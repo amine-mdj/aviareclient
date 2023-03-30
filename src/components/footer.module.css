@@ -81,3 +81,19 @@ margin-left: 350px;
     margin-top: 20px;
     margin-left: 20px;
   }
+
+@media only screen and (max-width: 600px) {
+  .footer{
+    text-align: center;
+    }
+  .grid{
+    display: block;
+  }
+  .flex{
+      display: block;
+    }
+    .nosmoyens > div{
+      margin-top: 0px;
+    margin-left: 0px;
+    }
+}

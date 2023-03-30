@@ -207,6 +207,8 @@ input:focus{
   color:white
 }
 
+
+
 .nav {
   
   width: 100%;
@@ -281,6 +283,38 @@ input:focus{
       }
     }
   }
+}
+.hamenu{
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .nav2{
+    text-align: center;
+  }
+  .nav2 > p {
+    position: static;
+    
+  }
+  .searchcontainer{
+    position: static;
+    margin: auto;
+  }
+
+  .hamenu{
+    display: block;
+    padding: 5px;
+    text-align: center;
+  }
+  .nav__list{
+    display: block;
+    text-align: center;
+    height: 0;
+    overflow: hidden;
+    transition: height 1s;
+    
+  }
+  
 }
 
 

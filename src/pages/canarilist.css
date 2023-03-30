@@ -72,3 +72,64 @@
     height: 30px;
     width: 50px;
 }
+
+.filterbottom{
+    display: none;
+}
+.closebtn{
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .filterbox{
+        display: block;
+        
+    }
+    .pricebox{
+        position: fixed;
+        top: auto;
+        bottom: -100%;
+        width: 100%;
+        margin-left: 0px;
+        text-align: center;
+        padding-inline: 20px;
+        border-radius: 15px 15px 0px 0px;
+        height: 300px;
+        transition: 1s;
+    }
+    .canarilist{
+        display : block;
+        margin-inline: 100px;
+        margin-top: 20vh;
+        
+    }
+    .filterbottom{
+        display: block;
+        width: 100%;
+        text-align: center;
+        background-color: white;
+        position: fixed;
+        bottom:0;
+        padding-block: 10px;
+        border-radius: 15px 15px 0px 0px;
+        box-shadow: 0px 0px 3px black;
+
+    }
+    .filterbottom button{
+        color: white;
+        background-color: #18A558;
+        padding: 7px 25px;
+        border-radius: 20px;
+        border: none;
+    }
+    .closebtn{
+        display: block;
+        position: relative;
+        height: 25px;
+    }
+    .closebtn button{
+      position: absolute;
+      right: 5px;
+      top: 5px;
+    }
+}

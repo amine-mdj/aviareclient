@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom'
 
 import { login, reset } from '../features/auth/authSlice'
 import styles from './login.module.css'
+import GoogleButton from 'react-google-button'
 
 const Login = ()=>{
     const [email, setEmail] = useState('')
@@ -57,7 +58,11 @@ const Login = ()=>{
     return (<div className={styles.log}>
         <div>
           <div className={styles.innerdivv1}>
-            <button onClick={handlegoogleauth}>Se connecter avec google</button>
+            {/* <button onClick={handlegoogleauth}>Se connecter avec google</button> */}
+            <GoogleButton
+             label='Se connecter avec google'
+            onClick={handlegoogleauth}
+/>
             <h1>Je me connecte</h1>
             <form onSubmit={onSubmit}>
              <label>*Votre adresse e-mail</label><br/>

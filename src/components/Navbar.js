@@ -8,8 +8,10 @@ const Navbar = ()=>{
   const location = useLocation()
   const [data, setData] = useState('empty')
   const [search, setSearch] = useState('')
+  const [isopen, setIsopen] = useState(false)
   const Navigate = useNavigate()
-  const accesstoken = localStorage.getItem('accesstoken');
+  
+  const [passportusernav, setPassportusernav] = useState(JSON.parse(localStorage.getItem('passportusernav')))
   const result = location.pathname.includes('admin')
 
   const {i18n, t} = useTranslation(['common'])
@@ -20,11 +22,9 @@ const Navbar = ()=>{
     }
   }
   const handleClick = () =>{
-    if (accesstoken == null){
-    Navigate('/login')
-    }else{
+       
       Navigate('/moncompte')
-    }
+    
   }
 
   const handleClick2 = ()=>{
@@ -32,6 +32,13 @@ const Navbar = ()=>{
   }
  
   useEffect(()=>{
+if (location.pathname == '/'){
+    axios.get( axios.get('http://localhost:8000/auth/login/success').then(response=>{
+      localStorage.setItem('passportusernav',JSON.stringify(response.data.user))
+      setPassportusernav(response.data.user)
+      
+     }))
+    }
     
     const controller = new AbortController();
     if (search !== ''){
@@ -73,6 +80,18 @@ const Navbar = ()=>{
        
    }
 
+   const shownav = () =>{
+    const navv = document.getElementsByClassName(styles.nav__list)
+    if(!isopen){
+    navv[0].style.height = '350px'
+    setIsopen(!isopen)
+   }
+   else{
+    navv[0].style.height = 0
+    setIsopen(!isopen)
+   }
+   }
+
   const items = data !== 'empty' ? <div className={styles.dropdown}>
         {data.map((item, index) => <p key={index}>{item.title}</p>)}
     </div> : null
@@ -81,6 +100,8 @@ const Navbar = ()=>{
   if(!result){
     return (<div>
         <div className={styles.nav1}>
+          {passportusernav?.profileImageUrl && <img src={passportusernav.profileImageUrl} referrerpolicy="no-referrer" alt='profile image url'
+          style={{height:'30px',width:'30px',borderRadius:'50%',marginTop:'5px',marginRight:'8px'}}/>}
          <i onClick={handleClick} class="fa-regular fa-user fa-lg"><p>{t("mon compte")}</p></i>
          <div className={styles.langue}>
           <i onClick={handleClick} style={{fontSize:'1.3em'}} class="bi bi-translate"></i><p>{t("langues")}</p>
@@ -94,11 +115,11 @@ const Navbar = ()=>{
           </div>
          </div>
         <div className={styles.nav2}>
+        <p onClick={handleClick2}><span>A</span>viaire-dz</p>
         <div className={styles.searchcontainer}>
         <input value={search} onChange={handleChange} type="text" id="fname" name="fname" placeholder={t("Rechercher dans le catalogue")}/>
         {items}
         </div>
-        <p onClick={handleClick2}><span>A</span>viaire-dz</p>
         </div>
         {/* <div className='nav3'><ul>
             <li><a href="#">ACCEUIL</a></li>
@@ -111,6 +132,7 @@ const Navbar = ()=>{
             <li><a href="#">QUI SOMMES NOUS</a></li>
             </ul></div> */}
             <nav className={styles.nav}>
+            <div className={styles.hamenu}><i class="fa-solid fa-bars fa-xl" onClick={shownav} style={{color: '#ffffff'}}></i></div>
     <ul className={styles.nav__list}>
 
     <li className={styles.nav__listitem}><NavLink style={navLinkStyles} className={styles.linkstyle} to='/'>{t("ACCEUIL")}</NavLink></li>
