@@ -74,3 +74,18 @@
     color: grey;
     margin-right: 5px;
 }
+
+@media only screen and (max-width: 600px) {
+    .log{
+        display: block;
+        padding-inline: 0;
+    }
+    .innerdivv1{
+        width: 100%;
+        
+    }
+    .innerdivv2{
+        width: 100%;
+        
+    }
+}

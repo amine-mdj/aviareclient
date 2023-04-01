@@ -12,7 +12,15 @@ const Quisommesnous = ()=>{
                  
                 <div><img src={faker.image.people()}  /></div>
             
-                <p className='descc'>{t("Bonjour,<br/>Titulaire d’un master 2 a luniversité <br/>de blida ,veterinaire , <br/>J’ai concu ce site dans le but de vous <br/>faire découvrir ma passion et de <br/>vous en faire profiter avec <br/>l’acquisition de superbes spécimens <br/> tels que :")}</p>
+                <pre className='descc'>{`
+Bonjour,
+Titulaire d’un master 2 a luniversité 
+de blida ,veterinaire , 
+J’ai concu ce site dans le but de vous 
+faire découvrir ma passion et de 
+vous en faire profiter avec 
+ l’acquisition de superbes spécimens 
+ tels que :`}</pre>
                 
                 <ul>
                     <li><i class="fa-solid fa-circle-check" style={{color:"#68C05A", margin:'10px'}}></i>{t("Canaris,")}</li>

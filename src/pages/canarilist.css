@@ -4,10 +4,11 @@
 
 .canarilist{
     
-    margin-inline: 150px;
+    margin-inline: 50px;
     margin-top: 20vh;
     display : grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit,minmax(220px,270px));
+    justify-content: center;
 }
 
 .bbreadcrumbs{
@@ -24,7 +25,7 @@
 
 .filterbox{
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 270px auto;
 }
 
 .pricebox{

@@ -3,3 +3,19 @@
     margin-right: 300px;
     margin-left:100px;
 }
+.detailmain p img{
+    width: 100%;
+    
+}
+@media only screen and (max-width: 600px) {
+    .detailmain{
+        margin-top:10px;
+        margin-right: 10px;
+        margin-left:10px;
+    }
+
+    .detailmain p img{
+        width: 100%;
+        height: 200px;
+    }
+}
