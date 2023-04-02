@@ -23,7 +23,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   }));
 
   const updateData = (data) => {
-    return axios.put(`http://localhost:8000/materials/${data.id}`, data.formData, data.config)
+    return axios.put(`https://aviaire-api.onrender.com/materials/${data.id}`, data.formData, data.config)
   }
 
 const MaterialEdit = () =>{

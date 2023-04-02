@@ -36,7 +36,7 @@ const Track = (props, state) => <StyledTrack {...props} index={state.index} />
 
 
 const fetchData = (page) => {
-  return axios.get(`http://localhost:8000/guest/paginatedCanari?page=${page}`)
+  return axios.get(`https://aviaire-api.onrender.com/guest/paginatedCanari?page=${page}`)
 }
 
 

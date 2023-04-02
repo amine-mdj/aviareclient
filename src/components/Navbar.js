@@ -44,7 +44,7 @@ if (location.pathname == '/'){
     if (search !== ''){
       
       axios
-    .get(`http://localhost:8000/guest/allsearch?search=${search}`,{
+    .get(`https://aviaire-api.onrender.com/guest/allsearch?search=${search}`,{
       signal: controller.signal
     })
     .then((res) =>{

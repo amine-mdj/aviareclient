@@ -21,7 +21,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   }));
 
   const addDatamat = (data) => {
-    return axios.post('http://localhost:8000/materials/', data.formData, data.config)
+    return axios.post('https://aviaire-api.onrender.com/materials/', data.formData, data.config)
   }
 
 

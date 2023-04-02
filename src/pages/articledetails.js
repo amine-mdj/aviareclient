@@ -5,7 +5,7 @@ import './articledetail.css'
 
 
 const fetchData = (id) => {
-    return axios.get(`http://localhost:8000/guest/articles/${id}`)
+    return axios.get(`https://aviaire-api.onrender.com/guest/articles/${id}`)
   }
 
 const Articledetails = () =>{

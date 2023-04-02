@@ -21,7 +21,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   }));
 
   const fetchData = (config) => {
-    return axios.get("http://localhost:8000/canari", config)
+    return axios.get("https://aviaire-api.onrender.com/canari", config)
   }
 
 const Oiseauxshow = () =>{
@@ -40,7 +40,7 @@ const Oiseauxshow = () =>{
 
     const deleteoiseaux = useMutation((id) => {
       
-      return axios.delete(`http://localhost:8000/canari/${id}`, config);
+      return axios.delete(`https://aviaire-api.onrender.com/canari/${id}`, config);
     });
     const [pageSize, setPageSize] = React.useState(5);
     const navigate = useNavigate()

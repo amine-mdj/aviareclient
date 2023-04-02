@@ -32,7 +32,7 @@ const Register = () => {
           email: values.email,
           password: values.password
         }
-          axios.post('http://localhost:8000/auth/register', user)
+          axios.post('https://aviaire-api.onrender.com/auth/register', user)
           .then(function (response) {
             if (response.status == 200)
             {

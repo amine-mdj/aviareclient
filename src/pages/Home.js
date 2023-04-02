@@ -43,7 +43,7 @@ const Home = () =>{
           };
 
           useEffect(()=>{
-           axios.get('http://localhost:8000/auth/login/success').then(response=>{
+           axios.get('https://aviaire-api.onrender.com/auth/login/success').then(response=>{
             localStorage.setItem('passportuser',JSON.stringify(response.data.user))
             
             

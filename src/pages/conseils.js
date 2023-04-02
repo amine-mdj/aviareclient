@@ -4,7 +4,7 @@ import styles from './conseils.module.css'
 import { useQuery } from 'react-query'
 
 const fetchData = () => {
-    return axios.get('http://localhost:8000/guest/articles')
+    return axios.get('https://aviaire-api.onrender.com/guest/articles')
   }
 
 const Conseils = () =>{

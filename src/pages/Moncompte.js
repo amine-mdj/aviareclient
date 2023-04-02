@@ -12,7 +12,7 @@ const handleclick = () =>{
         navigate('/login')
     }
     else {
-        window.open("http://localhost:8000/auth/logout", "_self");
+        window.open("https://aviaire-api.onrender.com/auth/logout", "_self");
     }
     
     

@@ -50,7 +50,7 @@ function App() {
     async(error)=>{
       const originalConfig = error.config;
      if (error.response.status === 403){
-     const {newaccesstoken} = await axios.get("http://localhost:8000/auth/refresh")
+     const {newaccesstoken} = await axios.get("https://aviaire-api.onrender.com/auth/refresh")
      localStorage.setItem("accesstoken", newaccesstoken)
      return axios(originalConfig)
      }

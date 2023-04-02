@@ -21,7 +21,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   }));
 
   const fetchData = () => {
-    return axios.get("http://localhost:8000/materials")
+    return axios.get("https://aviaire-api.onrender.com/materials")
   }
 
 const Materialslist = () =>{
@@ -35,7 +35,7 @@ const Materialslist = () =>{
       },
     }
     const deletemat = useMutation((id) => {
-      return axios.delete(`http://localhost:8000/materials/${id}`, config);
+      return axios.delete(`https://aviaire-api.onrender.com/materials/${id}`, config);
     });
     const [pageSize, setPageSize] = React.useState(5);
     const navigate = useNavigate()

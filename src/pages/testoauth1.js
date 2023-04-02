@@ -7,7 +7,7 @@ const Testoauth1 = () =>{
     const [user, setUser] = useState('no user')
     const navigate = useNavigate()
 
-    axios.get("http://localhost:8000/auth/login/success").then(response => {
+    axios.get("https://aviaire-api.onrender.com/auth/login/success").then(response => {
         // setUser(response.data.user)
         console.log(response)
         })
