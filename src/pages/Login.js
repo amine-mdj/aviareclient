@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import axios from 'axios'
+import axiosInstance from '../axiosInstance'
 import {useNavigate} from 'react-router-dom'
 
 import { login, reset } from '../features/auth/authSlice'
@@ -9,6 +9,7 @@ import GoogleButton from 'react-google-button'
 const Login = ()=>{
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [erorrmessage, setErrormessage] = useState(null)
     const navigate = useNavigate()
 
 
@@ -26,6 +27,10 @@ const Login = ()=>{
         navigate('/register')
       }
 
+      const handleclick2 = ()=>{
+        navigate('/forgotpassword')
+      }
+
       const handlegoogleauth = ()=>{
         window.open("http://localhost:8000/auth/google", "_self");
       }
@@ -38,7 +43,7 @@ const Login = ()=>{
           password:password,
         }
         
-          axios.post('https://aviaire-api.onrender.com/auth/login', user2)
+          axiosInstance.post('auth/login', user2)
           .then(function (response) {
             console.log(response)
             if (response.status == 200)
@@ -49,7 +54,8 @@ const Login = ()=>{
             }
           })
           .catch(function (error) {
-            console.log(error);
+            console.log(error.response.data.message);
+            setErrormessage(error.response.data.message)
           });
     
         
@@ -91,7 +97,8 @@ const Login = ()=>{
              onChange={onpasswordChange}/>
              
              </div>
-             <p>mot de passe oublié</p>
+             <p className={styles.errormessage}>{erorrmessage}</p>
+             <p className={styles.forgotten} onClick={handleclick2}>mot de passe oublié</p>
              <input type="submit" value="ME CONNECTER"/><br/>
             </form>
             </div>

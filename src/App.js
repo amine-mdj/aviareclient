@@ -18,6 +18,8 @@ import Home from "./pages/Home";
 import Quisommesnous from "./pages/Quisommenous";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import ForgotPassword from "./pages/forgotpassword";
+import ResetPassword from "./pages/resetpassword";
 import Canarilist from "./pages/Canarilist";
 import Conseils from './pages/conseils'
 import Materiels from './pages/materiels'
@@ -39,6 +41,7 @@ import Addmateriels from './reactadminframwork/addmateriel'
 import AddOiseaux from './reactadminframwork/addoiseaux'
 import Oiseauxshow from './reactadminframwork/oiseauxshow'
 import Materialslist from './reactadminframwork/materialslist'
+import axiosInstance from "./axiosInstance";
 const Administrator = React.lazy(() => import('./reactadminframwork/Administrator'))
 
 const queryclient = new QueryClient()
@@ -46,16 +49,7 @@ const queryclient = new QueryClient()
 function App() {
 
   axios.defaults.withCredentials = true
-  axios.interceptors.response.use(response => response,
-    async(error)=>{
-      const originalConfig = error.config;
-     if (error.response.status === 403){
-     const {newaccesstoken} = await axios.get("https://aviaire-api.onrender.com/auth/refresh")
-     localStorage.setItem("accesstoken", newaccesstoken)
-     return axios(originalConfig)
-     }
-     return Promise.reject(error)
-    })
+  
 
   return (
     <QueryClientProvider client={queryclient}>
@@ -69,6 +63,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/testoauth1" element={<Testoauth1 />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/resetpassword/:id/:token" element={<ResetPassword />} />
           <Route path="/qui-sommes-nous" element={<Quisommesnous />} />
           <Route path="/acceuil/oiseaux/canarilist" element={<Canarilist />} />
           <Route path="/astuces-et-conseils" element={<Conseils />} />

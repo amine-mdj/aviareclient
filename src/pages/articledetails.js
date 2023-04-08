@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom"
-import axios from 'axios'
 import { useQuery } from 'react-query'
 import './articledetail.css'
+import axiosInstance from "../axiosInstance"
 
 
 const fetchData = (id) => {
-    return axios.get(`https://aviaire-api.onrender.com/guest/articles/${id}`)
+    return axiosInstance.get(`guest/articles/${id}`)
   }
 
 const Articledetails = () =>{

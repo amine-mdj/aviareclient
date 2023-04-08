@@ -5,7 +5,7 @@ import Breadcrumbs from '../components/Breadcrumbs'
 import './canarilist.css'
 import ReactSlider from 'react-slider'
 import styled from 'styled-components'
-import axios from 'axios'
+import axiosInstance from '../axiosInstance'
 
 
 const StyledSlider = styled(ReactSlider)`
@@ -36,7 +36,7 @@ const Track = (props, state) => <StyledTrack {...props} index={state.index} />
 
 
 const fetchData = (page) => {
-  return axios.get(`https://aviaire-api.onrender.com/guest/paginatedCanari?page=${page}`)
+  return axiosInstance.get(`guest/paginatedCanari?page=${page}`)
 }
 
 
@@ -49,7 +49,7 @@ const Canarilist = ()=>{
   } )
   const [value, setValue] = useState([0, 100])
   const [data2, setData2] = useState([])
-  const [numberofpages, setNumberofpages] = useState(0)
+  const numberofpages = data?.data.numberofpages
   const [open, setOpen] = useState(false)
   
   // useEffect(() => {
@@ -63,7 +63,7 @@ const Canarilist = ()=>{
   //     .catch((err) => console.log(err, "it has an error"));
   // },[page]);
 
-  console.log(data)
+ 
 
   const handleprev = ()=>{
       setPage(p =>{
@@ -118,7 +118,7 @@ const Canarilist = ()=>{
     </div>
     </div>
     <div className='pagination'>
-    <p>{numberofpages}</p>
+    
     <button style={{height:'50px',width:'50px'}} className='btnpag' disabled={page===0} onClick={handleprev}>prev</button>
     <button style={{height:'50px',width:'50px'}} className='btnpag' disabled={page===numberofpages-1} onClick={handlenext}>next</button>
     </div>

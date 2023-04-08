@@ -9,7 +9,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {useQuery, useMutation} from 'react-query'
 import { useNavigate} from 'react-router-dom'
-import axios from 'axios'
+import axiosInstance from '../axiosInstance';
 
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -21,7 +21,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   }));
 
   const fetchData = () => {
-    return axios.get("https://aviaire-api.onrender.com/materials")
+    return axiosInstance.get("materials")
   }
 
 const Materialslist = () =>{
@@ -35,7 +35,7 @@ const Materialslist = () =>{
       },
     }
     const deletemat = useMutation((id) => {
-      return axios.delete(`https://aviaire-api.onrender.com/materials/${id}`, config);
+      return axiosInstance.delete(`materials/${id}`, config);
     });
     const [pageSize, setPageSize] = React.useState(5);
     const navigate = useNavigate()

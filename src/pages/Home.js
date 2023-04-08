@@ -1,6 +1,6 @@
 import React,{useEffect}  from "react";
 import Slider from "react-slick";
-import axios from 'axios'
+import axiosInstance from "../axiosInstance";
 
 import Customslide1 from '../components/Customslide1'
 import Customslide2 from '../components/Customslide2'
@@ -43,7 +43,7 @@ const Home = () =>{
           };
 
           useEffect(()=>{
-           axios.get('https://aviaire-api.onrender.com/auth/login/success').then(response=>{
+           axiosInstance.get('auth/login/success').then(response=>{
             localStorage.setItem('passportuser',JSON.stringify(response.data.user))
             
             

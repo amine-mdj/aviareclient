@@ -1,13 +1,13 @@
 import { useState } from "react"
 import { Navigate, useNavigate } from "react-router-dom"
-import axios from 'axios'
+import axiosInstance from "../axiosInstance"
 
 
 const Testoauth1 = () =>{
     const [user, setUser] = useState('no user')
     const navigate = useNavigate()
 
-    axios.get("https://aviaire-api.onrender.com/auth/login/success").then(response => {
+    axiosInstance.get("auth/login/success").then(response => {
         // setUser(response.data.user)
         console.log(response)
         })

@@ -9,7 +9,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {useQuery, useMutation} from 'react-query'
 import { useNavigate} from 'react-router-dom'
-import axios from 'axios'
+import axiosInstance from '../axiosInstance';
 
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -21,7 +21,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   }));
 
   const fetchData = (config) => {
-    return axios.get("https://aviaire-api.onrender.com/canari", config)
+    return axiosInstance.get("canari", config)
   }
 
 const Oiseauxshow = () =>{
@@ -36,11 +36,11 @@ const Oiseauxshow = () =>{
     }
 
     const {data} = useQuery('data-perpage-admin',()=> fetchData(config) )
-    console.log(token)
+    
 
     const deleteoiseaux = useMutation((id) => {
       
-      return axios.delete(`https://aviaire-api.onrender.com/canari/${id}`, config);
+      return axiosInstance.delete(`canari/${id}`, config);
     });
     const [pageSize, setPageSize] = React.useState(5);
     const navigate = useNavigate()

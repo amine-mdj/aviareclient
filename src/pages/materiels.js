@@ -5,7 +5,7 @@ import Breadcrumbs from '../components/Breadcrumbs'
 import './canarilist.css'
 import ReactSlider from 'react-slider'
 import styled from 'styled-components'
-import axios from 'axios'
+import axiosInstance from '../axiosInstance'
 
 
 const StyledSlider = styled(ReactSlider)`
@@ -36,7 +36,7 @@ const Track = (props, state) => <StyledTrack {...props} index={state.index} />
 
 
 const fetchData = (page) => {
-  return axios.get(`https://aviaire-api.onrender.com/guest/paginatedMaterials?page=${page}`)
+  return axiosInstance.get(`guest/paginatedMaterials?page=${page}`)
 }
 
 

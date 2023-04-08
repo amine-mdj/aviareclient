@@ -23,6 +23,10 @@
     
 }
 
+.btnpag:disabled{
+    opacity: 0.6;
+}
+
 .filterbox{
     display: grid;
     grid-template-columns: 270px auto;

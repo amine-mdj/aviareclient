@@ -3,7 +3,7 @@ import jwt_decode from "jwt-decode";
 
 
 const Requireadmin = ({children}) =>{
-    const accesstoken = JSON.parse(localStorage.getItem('accesstoken'))
+    const accesstoken = localStorage.getItem('accesstoken')
     const user = jwt_decode(accesstoken)
     console.log('from require admin' + user.role)
     return(

@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import {useNavigate,useLocation, NavLink} from 'react-router-dom'
-import axios from 'axios'
 import styles from './navbar.module.scss'
 import { useTranslation } from 'react-i18next'
+import axiosInstance from '../axiosInstance'
 
 const Navbar = ()=>{
   const location = useLocation()
@@ -33,18 +33,17 @@ const Navbar = ()=>{
  
   useEffect(()=>{
 if (location.pathname == '/'){
-    axios.get( axios.get('http://localhost:8000/auth/login/success').then(response=>{
+    axiosInstance.get('auth/login/success').then(response=>{
       localStorage.setItem('passportusernav',JSON.stringify(response.data.user))
       setPassportusernav(response.data.user)
       
-     }))
+     })
     }
     
     const controller = new AbortController();
     if (search !== ''){
       
-      axios
-    .get(`https://aviaire-api.onrender.com/guest/allsearch?search=${search}`,{
+      axiosInstance.get(`guest/allsearch?search=${search}`,{
       signal: controller.signal
     })
     .then((res) =>{

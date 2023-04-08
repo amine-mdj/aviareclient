@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom';
-import axios from 'axios'
+import axiosInstance from '../axiosInstance';
 // import { register, reset } from '../features/auth/authSlice'
 import styles from './register.module.css'
 import {useFormik} from 'formik'
@@ -32,7 +32,7 @@ const Register = () => {
           email: values.email,
           password: values.password
         }
-          axios.post('https://aviaire-api.onrender.com/auth/register', user)
+          axiosInstance.post('auth/register', user)
           .then(function (response) {
             if (response.status == 200)
             {

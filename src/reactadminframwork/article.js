@@ -4,7 +4,7 @@ import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import SendIcon from '@mui/icons-material/Send';
-import axios from 'axios'
+import axiosInstance from '../axiosInstance';
 import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css';
 
@@ -41,7 +41,7 @@ const Article = () =>{
   const onSubmit = (e) => {
     e.preventDefault()
     const article = quillRef.current.firstChild.innerHTML
-     axios.post('https://aviaire-api.onrender.com/articles',{article: article, title: title}, config)
+     axiosInstance.post('articles',{article: article, title: title}, config)
     
     
 }

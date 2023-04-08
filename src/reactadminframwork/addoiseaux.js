@@ -2,7 +2,7 @@ import { useState } from 'react';
 import TextField from '@mui/material/TextField'
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box'
-import axios from 'axios'
+import axiosInstance from '../axiosInstance';
 import { useMutation } from 'react-query';
 import Button from '@mui/material/Button'
 import { Typography } from '@mui/material'
@@ -21,7 +21,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   }));
 
   const addDataoiseaux = (data) => {
-    return axios.post('https://aviaire-api.onrender.com/canari/', data.formData, data.config)
+    return axiosInstance.post('canari/', data.formData, data.config)
   }
 
 

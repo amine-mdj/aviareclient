@@ -1,10 +1,10 @@
-import axios from 'axios'
 import Articlecard from '../components/articlecard'
 import styles from './conseils.module.css'
 import { useQuery } from 'react-query'
+import axiosInstance from '../axiosInstance'
 
 const fetchData = () => {
-    return axios.get('https://aviaire-api.onrender.com/guest/articles')
+    return axiosInstance.get('guest/articles')
   }
 
 const Conseils = () =>{

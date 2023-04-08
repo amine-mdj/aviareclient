@@ -8,7 +8,7 @@ import DescriptionIcon from '@mui/icons-material/Description'
 import SaveIcon from '@mui/icons-material/Save'
 import {useState} from 'react'
 import { useLocation } from 'react-router-dom'
-import axios from'axios'
+import axiosInstance from '../axiosInstance'
 import { useMutation } from 'react-query'
 
 
@@ -23,7 +23,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   }));
 
   const updateData = (data) => {
-    return axios.put(`https://aviaire-api.onrender.com/canari/${data.id}`, data.formData, data.config)
+    return axiosInstance.put(`canari/${data.id}`, data.formData, data.config)
   }
 
 const OiseauxEdit = () =>{
