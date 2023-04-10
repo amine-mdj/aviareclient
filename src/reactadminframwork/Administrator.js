@@ -114,6 +114,14 @@ const Administrator = () => {
     const handleClick2 = () =>{
       navigate('/admin/materialslist')
      }
+
+    const handleClick3 = () =>{
+      navigate('/admin/oiseauxshow')
+    }
+
+    const handleClick4 = () =>{
+      navigate('/admin/')
+    }
     
 
     
@@ -143,7 +151,7 @@ const Administrator = () => {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" noWrap component="div">
+            <Typography variant="h6" onClick={handleClick4} noWrap component="div">
               Admin panel
             </Typography>
           </Toolbar>
@@ -174,7 +182,7 @@ const Administrator = () => {
                   >
                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                   </ListItemIcon>
-                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                  <ListItemText primary={text} onClick={text === 'canari'? handleClick3 : null } sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>
             ))}

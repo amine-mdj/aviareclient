@@ -5,6 +5,11 @@ import './moncompte.css'
 const Moncompte = () => {
     const navigate = useNavigate()
 
+
+    const gotoadmin = () =>{
+        navigate('/admin')
+    }
+
 const handleclick = () =>{
     const accesstoken = localStorage.getItem('accesstoken')
     if (accesstoken !== null){
@@ -22,6 +27,16 @@ const handleclick = () =>{
 
     return(
         <div className='div0mc'>
+            <div onClick={gotoadmin} className='orangediv' >
+            <div style={{position:'absolute',
+             height:'100%',
+
+             }}>
+            <i class="fa-solid fa-caret-left fa-2xl" style={{color: '#ffffff'}}></i>
+            </div>
+            <p style={{color:'white'}}>swith to </p>
+            <p style={{color:'white'}}>ADMIN PANEL</p>
+        </div>
             <div className='div1mc'>
                 <p>Acceuil &gt; Mon compte</p>
                 <button onClick={handleclick}>DECONNEXION</button>

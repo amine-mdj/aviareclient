@@ -3,6 +3,16 @@
     margin-inline: 100px;
     
 }
+
+.orangediv{
+        position:fixed;
+        right:0;
+        top:50%;
+        background-color:#fb8c00;
+        text-align:center;
+        padding:5px 10px;
+        cursor:pointer
+}
 .div1mc{
     display: flex;
     justify-content: space-between;

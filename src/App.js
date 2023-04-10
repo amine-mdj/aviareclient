@@ -41,6 +41,7 @@ import Addmateriels from './reactadminframwork/addmateriel'
 import AddOiseaux from './reactadminframwork/addoiseaux'
 import Oiseauxshow from './reactadminframwork/oiseauxshow'
 import Materialslist from './reactadminframwork/materialslist'
+import Welcomeadmin from "./reactadminframwork/welcomeadmin";
 import axiosInstance from "./axiosInstance";
 const Administrator = React.lazy(() => import('./reactadminframwork/Administrator'))
 
@@ -78,6 +79,10 @@ function App() {
           <Suspense fallback={<div>Loading...</div>}>
             <Administrator/>
           </Suspense>} >
+          <Route
+          path=""
+          element={<Welcomeadmin />}
+        />
           <Route
           path="oiseauxshow"
           element={<Oiseauxshow />}
