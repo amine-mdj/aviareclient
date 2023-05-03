@@ -1,6 +1,7 @@
 import {useState ,useEffect} from 'react'
 import {useQuery} from 'react-query'
 import Singlecanari from '../components/Singlecanari'
+import Holder from '../components/Holder'
 import Breadcrumbs from '../components/Breadcrumbs'
 import './canarilist.css'
 import ReactSlider from 'react-slider'
@@ -42,8 +43,10 @@ const fetchData = (page) => {
 
 const Canarilist = ()=>{
   const [page, setPage] = useState(0)
+  const repeat = 10
+  let items = null
 
-  const {data} = useQuery(['data-perpage', page],()=> fetchData(page),{
+  const {data,isLoading} = useQuery(['data-perpage', page],()=> fetchData(page),{
     keepPreviousData:true,
     
   } )
@@ -87,9 +90,12 @@ const Canarilist = ()=>{
     pricebox[0].style.bottom = '-100%'
   
   }
-
-    const items = data?.data.allDatacvrt.map(item => <Singlecanari image={item.b64} title={item.title} price={item.price}/>)
-
+    if (isLoading){
+       items = [...Array(repeat)].map((e, i) => <Holder className="busterCards" key={i}/>)
+    }
+    else {
+     items = data?.data.allDatacvrt.map(item => <Singlecanari image={item.b64} title={item.title} price={item.price}/>)
+    }
 
     return (<div className='oouterdiv'>
       <div className='filterbottom'><button onClick={showfilter}>Filtrer</button></div>

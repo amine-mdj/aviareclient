@@ -10,6 +10,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import {useQuery, useMutation} from 'react-query'
 import { useNavigate} from 'react-router-dom'
 import axiosInstance from '../axiosInstance';
+import {ToastContainer,toast} from 'react-toastify'
+import {ClipLoader} from "react-spinners"
+import 'react-toastify/dist/ReactToastify.css'
 
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -35,7 +38,14 @@ const Oiseauxshow = () =>{
       },
     }
 
-    const {data} = useQuery('data-perpage-admin',()=> fetchData(config) )
+    
+
+    const {data} = useQuery('data-perpage-admin',
+    ()=> fetchData(config),
+    {
+      refetchOnWindowFocus:false
+    }
+     )
     
 
     const deleteoiseaux = useMutation((id) => {
@@ -43,6 +53,8 @@ const Oiseauxshow = () =>{
       return axiosInstance.delete(`canari/${id}`, config);
     });
     const [pageSize, setPageSize] = React.useState(5);
+    const [clickedbutton, setclickedbutton] = React.useState('');
+    let mutationdata = deleteoiseaux.data;
     const navigate = useNavigate()
 
     const handleadd = ()=>{
@@ -54,6 +66,16 @@ const Oiseauxshow = () =>{
       
     }
 
+    const notify = (datadelete) =>{
+      toast.success(datadelete.data.message);
+     } 
+
+     if (mutationdata){
+      notify(mutationdata)
+      mutationdata = null
+      
+      
+    }
    
 
     const columns = React.useMemo(()=> [
@@ -98,8 +120,12 @@ const Oiseauxshow = () =>{
         flex:1,
         renderCell:(params) =>{
           
-           return (<Button color="error" onClick={()=>deleteoiseaux.mutate(params.row.id)} startIcon={<DeleteIcon />}   >
-        Delete
+           return (<Button color="error" onClick={()=>{
+            deleteoiseaux.mutate(params.row.id)
+            setclickedbutton(params.row.id)
+          }}
+             startIcon={<DeleteIcon />}   >
+        {deleteoiseaux.isLoading && params.row.id===clickedbutton ?<ClipLoader color='red' size={25} loading={params.row.id===clickedbutton}/>: "Delete"}
           </Button>)}
         
       },
@@ -115,6 +141,7 @@ const Oiseauxshow = () =>{
       <Button color="primary" onClick={handleadd} startIcon={<AddIcon />}  sx={{ position: "relative", top: 0, right: 0, zIndex: 2000 }} >
     ajouter un oiseaux
       </Button>
+      <ToastContainer />
       
       {data?.data.length>0
     ? <DataGrid

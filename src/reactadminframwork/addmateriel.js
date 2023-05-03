@@ -9,6 +9,9 @@ import { Typography } from '@mui/material'
 import SaveIcon from '@mui/icons-material/Save'
 import DescriptionIcon from '@mui/icons-material/Description'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
+import {ToastContainer,toast} from 'react-toastify'
+import {ClipLoader} from "react-spinners"
+import 'react-toastify/dist/ReactToastify.css'
 
 
 const DrawerHeader = styled('div')(({ theme }) => ({
@@ -30,7 +33,7 @@ const Addmateriel = ()=>{
     const [matimg, setmatimg] = useState("")
     const [title, setTitle] = useState("")
     const [price, setPrice] = useState("")
-    const {mutate:updateoiseaux} = useMutation(addDatamat)
+    const {mutate:updatemat,isLoading,data} = useMutation(addDatamat)
 
     const token = localStorage.getItem("accesstoken")
 
@@ -39,6 +42,10 @@ const Addmateriel = ()=>{
         Authorization: `Bearer ${token}`,
       },
     }
+
+    const notify = (data) =>{
+      toast.success(data.data.message);
+     } 
 
 
     const onFileChange = (e) =>{
@@ -61,7 +68,12 @@ const Addmateriel = ()=>{
         formData.append('title', title)
         formData.append('price', price)
          const mutatedata =  {formData: formData, config: config}
-        updateoiseaux(mutatedata)
+        updatemat(mutatedata)
+    }
+
+    if (data){
+      notify(data)
+      
     }
 
     return (<Box>
@@ -131,9 +143,12 @@ const Addmateriel = ()=>{
                  value={price}
                   onChange={onpriceChange}
                  />
+                 <ToastContainer />
           </Box>
           <Box sx={{width: 1250,height:50, position:'relative'}}>
-            <Button color="error" onClick={onSubmit} size="large" variant="contained" startIcon={<SaveIcon />} sx={{position:'absolute', right:50, top:20}}>Save</Button>
+            <Button color="error" onClick={onSubmit} size="large" variant="contained" startIcon={<SaveIcon />} sx={{position:'absolute', right:50, top:20}}>
+            {isLoading? <ClipLoader color='white' size={25} loading/>:"Save"}
+            </Button>
           </Box>
           </Box>)
 }

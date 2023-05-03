@@ -3,6 +3,8 @@ import {useNavigate,useLocation, NavLink} from 'react-router-dom'
 import styles from './navbar.module.scss'
 import { useTranslation } from 'react-i18next'
 import axiosInstance from '../axiosInstance'
+import Shoppingbag from '../img/shopping-bag.png'
+import Shoppingbag2 from '../img/shopping-bag2.png'
 
 const Navbar = ()=>{
   const location = useLocation()
@@ -73,10 +75,19 @@ if (location.pathname == '/'){
     setSearch(e.target.value)
    }
 
+   const navigateto = (item)=>{
+       Navigate(`/acceuil/oiseaux/${item._id}`, {state:item})
+       
+   }
+
    const handlelanguagechange = (value) =>{
 
         i18n.changeLanguage(value)
        
+   }
+
+   const handlecart = ()=>{
+    Navigate('/panier')
    }
 
    const shownav = () =>{
@@ -92,13 +103,14 @@ if (location.pathname == '/'){
    }
 
   const items = data !== 'empty' ? <div className={styles.dropdown}>
-        {data.map((item, index) => <p key={index}>{item.title}</p>)}
+        {data.map((item, index) => <p onClick={()=>navigateto(item)} key={index}>{item.title}</p>)}
     </div> : null
   
   
   if(!result){
     return (<div>
         <div className={styles.nav1}>
+        
           {passportusernav?.profileImageUrl && <img src={passportusernav.profileImageUrl} referrerpolicy="no-referrer" alt='profile image url'
           style={{height:'30px',width:'30px',borderRadius:'50%',marginTop:'5px',marginRight:'8px'}}/>}
          <i onClick={handleClick} class="fa-regular fa-user fa-lg"><p>{t("mon compte")}</p></i>
@@ -110,8 +122,8 @@ if (location.pathname == '/'){
             <li id="2" value='ar' onClick={()=>handlelanguagechange('ar')}>{t("arab")}</li>
           </ul>
           </div>
-          
           </div>
+          <img src={Shoppingbag} onClick={handlecart} alt='shoppingbag'/>
          </div>
         <div className={styles.nav2}>
         <p onClick={handleClick2}><span>A</span>viaire-dz</p>

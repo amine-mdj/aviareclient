@@ -10,6 +10,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import {useQuery, useMutation} from 'react-query'
 import { useNavigate} from 'react-router-dom'
 import axiosInstance from '../axiosInstance';
+import {ToastContainer,toast} from 'react-toastify'
+import {ClipLoader} from "react-spinners"
+import 'react-toastify/dist/ReactToastify.css'
 
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -25,7 +28,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   }
 
 const Materialslist = () =>{
-    const {data} = useQuery('data-perpage-admin',()=> fetchData() )
+    const {data} = useQuery('data-perpage-admin',
+    ()=> fetchData(),
+    {
+      refetchOnWindowFocus:false
+    }
+     )
 
     const token = localStorage.getItem("accesstoken")
 
@@ -38,6 +46,8 @@ const Materialslist = () =>{
       return axiosInstance.delete(`materials/${id}`, config);
     });
     const [pageSize, setPageSize] = React.useState(5);
+    const [clickedbutton, setclickedbutton] = React.useState('');
+    let mutationdata = deletemat.data;
     const navigate = useNavigate()
     
 
@@ -49,9 +59,20 @@ const Materialslist = () =>{
       navigate(`/admin/materialedit/${mat.id}`, {state: mat})
     
   }
+  const notify = (datadelete) =>{
+    toast.success(datadelete.data.message);
+   } 
+
+   if (mutationdata){
+    notify(mutationdata)
+    mutationdata = null
+    
+    
+  }
 
   const handleDelete = (mat) => {
     deletemat.mutate(mat.id)
+    setclickedbutton(mat.id)
   
 }
     
@@ -99,7 +120,7 @@ const Materialslist = () =>{
         renderCell:(params) =>{
           
            return (<Button color="error" onClick={()=>handleDelete(params.row)} startIcon={<DeleteIcon />}   >
-        Delete
+        {deletemat.isLoading && params.row.id===clickedbutton ?<ClipLoader color='red' size={25} loading={params.row.id===clickedbutton}/>: "Delete"}
           </Button>)}
         
       },
@@ -115,6 +136,7 @@ const Materialslist = () =>{
       <Button color="primary" onClick={handleadd} startIcon={<AddIcon />}  sx={{ position: "relative", top: 0, right: 0, zIndex: 2000 }} >
     ajouter un materiel pour oiseaux
       </Button>
+      <ToastContainer />
       
       {data?.data.length>0
     ? <DataGrid

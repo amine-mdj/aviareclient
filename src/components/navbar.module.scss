@@ -35,8 +35,16 @@ $radius: 0.2rem;
   background-color: aquamarine;
 }
 
+.nav1 > img{
+  margin-top: 8px;
+  margin-right:23px;
+  height: 22px;
+  width: 22px;
+  cursor: pointer;
+}
+
 .langue{
-  margin-right: 25px;
+  margin-right: 18px;
   display: flex;
   justify-content: space-between;
 }
@@ -86,6 +94,8 @@ $radius: 0.2rem;
   background-size: 100% 100%;
   position: relative;
 }
+
+
 
 .nav1 > i{
   

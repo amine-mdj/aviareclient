@@ -9,7 +9,8 @@ import * as Yup from 'yup'
 const validationSchema = Yup.object({
   name: Yup.string().required('champs obligatoire'),
   email: Yup.string().email('inserer un email valide').required('champs obligatoire'),
-  password: Yup.string().min(8, "le mot de pass doit contenir au moins 8 caracteres").required('champ obligatoire')
+  password: Yup.string().min(8, "le mot de pass doit contenir au moins 8 caracteres").required('champ obligatoire'),
+  address: Yup.string().required('champs obligatoire'),
 })
 
 const Register = () => {
@@ -24,13 +25,15 @@ const Register = () => {
         name:'',
         email:'',
         password:'',
+        address:'',
       },
       onSubmit: values =>{
         
            const user = {
           name: values.name,
           email: values.email,
-          password: values.password
+          password: values.password,
+          address: values.address
         }
           axiosInstance.post('auth/register', user)
           .then(function (response) {
@@ -151,7 +154,29 @@ const Register = () => {
              onBlur={formik.handleBlur}
               onChange={formik.handleChange}/>
              </div>
-             {formik.touched.email && formik.errors.password ? <div className={styles.errormsg}>{formik.errors.password} </div> : null}
+             {formik.touched.password && formik.errors.password ? <div className={styles.errormsg}>{formik.errors.password} </div> : null}
+             <br/>
+             <label>*Votre adresse</label><br/>
+             <div style={{backgroundColor:'#F2F2F2',
+              display:'inline-block',
+               padding:'5px 10px',
+               borderRadius:'20px',
+               margin:'10px 0'
+               }} >
+             <i className="fa-regular fa-address-book" style={{color:"grey",marginRight:"5px"}}></i>
+             <input style={{border: "none",
+                            backgroundColor: "#F2F2F2"}} 
+               type="text"
+              //  value={name}
+              //  onChange={onnameChange}
+              name='address'
+              value={formik.values.address}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+               />
+
+             </div>
+             {formik.touched.address && formik.errors.address ? <div className={styles.errormsg}>{formik.errors.address} </div> : null}
              <br/>
              <p>mot de passe oublié</p>
              <input type="submit" value="Register" disabled={!formik.isValid}/><br/>

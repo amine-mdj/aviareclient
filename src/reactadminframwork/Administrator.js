@@ -122,6 +122,10 @@ const Administrator = () => {
     const handleClick4 = () =>{
       navigate('/admin/')
     }
+
+    const handleClickorders = ()=>{
+      navigate('/admin/ordershow')
+    }
     
 
     
@@ -164,7 +168,7 @@ const Administrator = () => {
           </DrawerHeader>
           <Divider />
           <List>
-            {['canari', 'peroquet', 'perruches'].map((text, index) => (
+            {['canari', 'orders'].map((text, index) => (
               <ListItem key={text} disablePadding sx={{ display: 'block' }}>
                 <ListItemButton
                   sx={{
@@ -182,7 +186,7 @@ const Administrator = () => {
                   >
                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                   </ListItemIcon>
-                  <ListItemText primary={text} onClick={text === 'canari'? handleClick3 : null } sx={{ opacity: open ? 1 : 0 }} />
+                  <ListItemText primary={text} onClick={text === 'canari'? handleClick3 : handleClickorders } sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>
             ))}

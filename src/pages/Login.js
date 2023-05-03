@@ -32,7 +32,7 @@ const Login = ()=>{
       }
 
       const handlegoogleauth = ()=>{
-        window.open("http://localhost:8000/auth/google", "_self");
+        window.open("https://aviaire-api.onrender.com/auth/google", "_self");
       }
     
       const onSubmit = (e) => {
@@ -50,6 +50,7 @@ const Login = ()=>{
             {
               
               localStorage.setItem('accesstoken', JSON.stringify(response.data.accesstoken)) 
+              localStorage.setItem('address', JSON.stringify(response.data.address))
               navigate('/moncompte')
             }
           })

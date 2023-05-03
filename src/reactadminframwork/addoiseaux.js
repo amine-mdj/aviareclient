@@ -9,6 +9,9 @@ import { Typography } from '@mui/material'
 import SaveIcon from '@mui/icons-material/Save'
 import DescriptionIcon from '@mui/icons-material/Description'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
+import {ToastContainer,toast} from 'react-toastify'
+import {ClipLoader} from "react-spinners"
+import 'react-toastify/dist/ReactToastify.css'
 
 
 const DrawerHeader = styled('div')(({ theme }) => ({
@@ -30,7 +33,8 @@ const AddOiseaux = ()=>{
     const [oiseauximg, setOiseauximg] = useState("")
     const [title, setTitle] = useState("")
     const [price, setPrice] = useState("")
-    const {mutate:updateoiseaux} = useMutation(addDataoiseaux)
+    const {mutate:updateoiseaux,isLoading,data} = useMutation(addDataoiseaux)
+    
 
     const token = localStorage.getItem("accesstoken")
 
@@ -39,6 +43,10 @@ const AddOiseaux = ()=>{
         Authorization: `Bearer ${token}`,
       },
     }
+
+    const notify = (data) =>{
+     toast.success(data.data.message);
+    } 
 
 
     const onFileChange = (e) =>{
@@ -54,6 +62,7 @@ const AddOiseaux = ()=>{
          setPrice( e.target.value )
       }
 
+
       const onSubmit = (e) => {
         e.preventDefault()
         const formData = new FormData()
@@ -62,6 +71,12 @@ const AddOiseaux = ()=>{
         formData.append('price', price)
          const mutatedata =  {formData: formData, config:config}
         updateoiseaux(mutatedata)
+        
+        
+    }
+    if (data){
+      notify(data)
+      
     }
 
     return (<Box>
@@ -131,9 +146,13 @@ const AddOiseaux = ()=>{
                  value={price}
                   onChange={onpriceChange}
                  />
+                 <ToastContainer />
+                 
           </Box>
           <Box sx={{width: 1250,height:50, position:'relative'}}>
-            <Button color="error" onClick={onSubmit} size="large" variant="contained" startIcon={<SaveIcon />} sx={{position:'absolute', right:50, top:20}}>Save</Button>
+            <Button color="error" onClick={onSubmit} size="large" variant="contained" startIcon={<SaveIcon />} sx={{position:'absolute', right:50, top:20}}>
+              {isLoading? <ClipLoader color='white' size={25} loading/>:"Save"}
+              </Button>
           </Box>
           </Box>)
 }

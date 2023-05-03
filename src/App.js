@@ -2,6 +2,7 @@ import { BrowserRouter as Router,Routes,Route} from "react-router-dom"
 import React, { Suspense } from 'react'
 import axios from 'axios'
 import { QueryClientProvider, QueryClient } from "react-query";
+
 import './app1.scss';
 
 
@@ -24,7 +25,8 @@ import Canarilist from "./pages/Canarilist";
 import Conseils from './pages/conseils'
 import Materiels from './pages/materiels'
 import Articledetails from "./pages/articledetails";
-
+import Productdetail from "./pages/productdetail";
+import Panier from './pages/panier'
 import Testoauth1 from "./pages/testoauth1";
 
 
@@ -42,16 +44,18 @@ import AddOiseaux from './reactadminframwork/addoiseaux'
 import Oiseauxshow from './reactadminframwork/oiseauxshow'
 import Materialslist from './reactadminframwork/materialslist'
 import Welcomeadmin from "./reactadminframwork/welcomeadmin";
+import Ordershow from "./reactadminframwork/ordershow";
+import Orderdetails from "./reactadminframwork/orderdetails";
 import axiosInstance from "./axiosInstance";
+
 const Administrator = React.lazy(() => import('./reactadminframwork/Administrator'))
 
 const queryclient = new QueryClient()
 
 function App() {
 
-  axios.defaults.withCredentials = true
-  
-
+   axios.defaults.withCredentials = true
+   
   return (
     <QueryClientProvider client={queryclient}>
       <Suspense fallback={null}>
@@ -59,7 +63,6 @@ function App() {
       <Navbar />
       <div className="container mainhome">
         <Routes>
-          
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/testoauth1" element={<Testoauth1 />} />
@@ -71,9 +74,10 @@ function App() {
           <Route path="/astuces-et-conseils" element={<Conseils />} />
           <Route path="/acceuil/materiels" element={<Materiels />} />
           <Route path="/article/:id" element={<Articledetails />} />
+          <Route path="/acceuil/oiseaux/:id" element={<Productdetail />} />
+          <Route path="/panier" element={<Panier />} />
           <Route element={<Requireauth/>}><Route path="/moncompte" element={<Moncompte />} /></Route>
           
-
           <Route element={<Requireadmin/>}>
             <Route path="/admin/" element={
           <Suspense fallback={<div>Loading...</div>}>
@@ -86,6 +90,10 @@ function App() {
           <Route
           path="oiseauxshow"
           element={<Oiseauxshow />}
+        />
+         <Route
+          path="ordershow"
+          element={<Ordershow />}
         />
         <Route
           path="article"
@@ -110,6 +118,10 @@ function App() {
          <Route
           path="materialedit/:id"
           element={<MaterialEdit />}
+        />
+        <Route
+          path="orderdetails/:id"
+          element={<Orderdetails />}
         />
           </Route>
           </Route>

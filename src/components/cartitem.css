@@ -1,0 +1,49 @@
+.mainitem{
+    display: flex;
+}
+.mainitem img{
+    margin: 30px;
+    width: 50px;
+    height: 70px;
+
+}
+.counteritem{
+    font-size:larger;
+    margin-right: 50px;
+    margin-top: 60px;
+    display:flex;
+}
+
+.counteritem p{
+    margin-inline: 10px;
+    color: #338A91;
+}
+
+.titleprice{
+    margin-top: 25px;
+    width: 100px;
+}
+
+.titleprice p:nth-child(2){
+    font-weight: bold;
+}
+
+.mainitem > p {
+    margin-top: 60px;
+}
+
+.disponible{
+    margin-inline: 40px;
+    color: #B5CC21;
+}
+
+.mainitem > p:nth-last-child(1){
+    margin-right: 20px;
+}
+
+.hr{
+    margin-inline: 15px;
+}
+
+
+

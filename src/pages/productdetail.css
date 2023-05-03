@@ -1,0 +1,83 @@
+.contain{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 60vh;
+}
+
+figure{
+	width: 600px;
+	height: 500px;
+	overflow:hidden;
+	border:3px solid #fff;
+	position: relative;
+}
+figure img{
+	max-width: 100%;
+	min-width: 100%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	z-index: 10;
+	pointer-events: none;
+}
+
+.pricecontain{
+    margin-left: 20px;
+}
+
+.pricecontain p:nth-child(1){
+    color: rgb(176, 176, 176);
+    font-size: 14px;
+}
+
+.pricecontain p:nth-child(2){
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.livraisoncontain p:nth-child(1){
+    font-weight: bold;
+    color: cornflowerblue;
+}
+
+.livraisoncontain p:nth-child(2){
+    color: rgb(180, 180, 180);
+}
+
+.innercontain button{
+    margin-left: 20px;
+    padding-inline: 20px;
+    padding-block: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(100, 180, 68);
+    border: none;
+    border-radius: 30px;
+}
+.innercontain{
+    display: flex;
+}
+
+.detailscontain h1{
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.livraisoncontain{
+    margin-inline: 20px;
+}
+
+.descriptioncontain p:nth-child(1){
+    font-size: 28px;
+    margin-left: 20px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.descriptioncontain p:nth-child(2){
+    margin-inline: 20px;
+}
+

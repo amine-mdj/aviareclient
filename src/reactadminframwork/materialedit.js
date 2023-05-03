@@ -10,6 +10,9 @@ import {useState} from 'react'
 import { useLocation } from 'react-router-dom'
 import axiosInstance from '../axiosInstance'
 import { useMutation } from 'react-query'
+import {ToastContainer,toast} from 'react-toastify'
+import {ClipLoader} from "react-spinners"
+import 'react-toastify/dist/ReactToastify.css'
 
 
 
@@ -38,7 +41,7 @@ const MaterialEdit = () =>{
     const [matimg, setMatimg] = useState(fileimg)
     const [title, setTitle] = useState(state.title)
     const [price, setPrice] = useState(state.price)
-    const {mutate:updatemat} = useMutation(updateData)
+    const {mutate:updatemat,isLoading,data} = useMutation(updateData)
 
     
     const token = localStorage.getItem("accesstoken")
@@ -48,6 +51,10 @@ const MaterialEdit = () =>{
         Authorization: `Bearer ${token}`,
       },
     }
+
+    const notify = (data) =>{
+      toast.success(data.data.message);
+     } 
 
     const onFileChange = (e) =>{
         setMatimg(e.target.files[0])
@@ -70,6 +77,11 @@ const MaterialEdit = () =>{
         formData.append('price', price)
          const mutatedata =  {formData: formData, id: state.id, config: config}
         updatemat(mutatedata)
+    }
+
+    if (data){
+      notify(data)
+      
     }
 
 
@@ -140,9 +152,12 @@ const MaterialEdit = () =>{
              value={price}
               onChange={onpriceChange}
              />
+             <ToastContainer />
       </Box>
       <Box sx={{width: 1250,height:50, position:'relative'}}>
-        <Button color="error" onClick={onSubmit} size="large" variant="contained" startIcon={<SaveIcon />} sx={{position:'absolute', right:50, top:20}}>Save</Button>
+        <Button color="error" onClick={onSubmit} size="large" variant="contained" startIcon={<SaveIcon />} sx={{position:'absolute', right:50, top:20}}>
+        {isLoading? <ClipLoader color='white' size={25} loading/>:"Save"}
+        </Button>
       </Box>
       </Box>)
 }

@@ -1,0 +1,87 @@
+.maincart{
+    background-color: #F4F4F4;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.maincart > p {
+    margin-left: 40px;
+    margin-top: 30px;
+    color: #398A91;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.maincart i{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.cartitems{
+    margin-inline: 40px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 8px #BFBFBF;
+    align-self: flex-start;
+}
+.flexcart{
+    display: flex;
+}
+
+.totalprice{
+    padding: 30px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 8px #BFBFBF;
+}
+
+.line1{
+    display: flex;
+    margin-bottom: 30px;
+}
+.line1 p:nth-child(2){
+    font-weight: bold;
+}
+.line1 p:nth-child(1){
+    margin-right: 40px;
+}
+
+.line4{
+    display: flex;
+    margin-block: 30px;
+}
+
+.line4 p{
+    font-weight: bold;
+}
+.line4 p:nth-child(1){
+    margin-right: 55px;
+
+}
+
+.offert{
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.totalprice button{
+    padding: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    background-color: rgb(100, 180, 68);
+}
+
+.totalprice input{
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    background-color: #f1f2f3;
+}
+
+.maincart h1{
+    margin-left: 40px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
