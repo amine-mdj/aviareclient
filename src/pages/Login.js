@@ -62,7 +62,14 @@ const Login = ()=>{
         
       }
 
-    return (<div className={styles.log}>
+    return (<div>
+      <div className={styles.adminCred}>
+      <p>admin credentials :</p>
+      <p>Email : aminerate16@gmail.com</p>
+      <p>password : marioncotillard</p>
+      </div>
+    <div className={styles.log}>
+    
         <div>
           <div className={styles.innerdivv1}>
             {/* <button onClick={handlegoogleauth}>Se connecter avec google</button> */}
@@ -112,6 +119,7 @@ const Login = ()=>{
             <button onClick={handleclick}>CREER MON COMPTE</button>
             </div>
         </div>
+    </div>
     </div>)
 }
 
